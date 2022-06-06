@@ -7,19 +7,30 @@ namespace Butthole.Settings
 	class MoveController : Node2D
 	{
 		//objects
-		Node2D scene = new Node2D();
-		Node2D jinx = new Node2D();
-		Sprite jinxSprite = new Sprite();
-		AnimationPlayer anim = new AnimationPlayer();
+		Node2D scene = null;
+		Node2D jinx = null;
+		Sprite jinxSprite = null;
+		AnimationPlayer anim = null;
+		Vector2 xSpeed;
 
 		//variables
 		bool left;
 		bool right;
 		bool canPlayAnim;
+
+		void SetObjectValues()
+		{
+			scene = GetNode<Node2D>("/root/Main");
+			jinx = GetParent<Node2D>();
+			jinx.GlobalPosition = new Vector2(500, 360);
+			jinxSprite = jinx.GetChild<Sprite>(0);
+			anim = jinxSprite.GetChild<AnimationPlayer>(0);
+		}
 		
 		public override void _Ready()
 		{
 			canPlayAnim = true;
+			xSpeed = new Vector2(200, 0);
 			SetObjectValues();	
 		}
 
@@ -30,7 +41,7 @@ namespace Butthole.Settings
 				//LEFT MOVEMENT
 				//on press
 				case {} when Input.IsActionPressed("Move Left") && !right:
-					jinx.Position -= new Vector2(200, 0) * delta;
+					jinx.GlobalPosition -= xSpeed * delta;
 					jinxSprite.FlipH = false;
 					left = true;
 					if(canPlayAnim)
@@ -49,7 +60,7 @@ namespace Butthole.Settings
 				//RIGHT MOVEMENT
 				//on press
 				case {} when Input.IsActionPressed("Move Right") && !left:
-					jinx.Position += new Vector2(200, 0) * delta;
+					jinx.GlobalPosition += xSpeed * delta;
 					jinxSprite.FlipH = true;
 
 					right = true;
@@ -68,13 +79,5 @@ namespace Butthole.Settings
 				
 			}
 		} 
-
-		void SetObjectValues()
-		{
-			scene = GetNode<Node2D>("/root/Main");
-			jinx = GetParent<Node2D>();
-			jinxSprite = jinx.GetChild<Sprite>(0);
-			anim = jinxSprite.GetChild<AnimationPlayer>(0);
-		}
 	}
 }
