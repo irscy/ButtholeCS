@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/scene/JINX.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/script/nodes/MainScene.cs" type="Script" id=2]
+[ext_resource path="res://src/script/settings/MoveController.cs" type="Script" id=3]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="JINX" parent="." instance=ExtResource( 1 )]
+position = Vector2( 500, 360 )
+
+[node name="MoveController" type="Node2D" parent="JINX"]
+position = Vector2( -500, -300 )
+script = ExtResource( 3 )
