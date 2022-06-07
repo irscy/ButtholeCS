@@ -46,6 +46,7 @@ namespace Butthole.Settings
 					left = true;
 					if(canPlayAnim)
 					{
+						anim.Stop(true);
 						anim.Play("FlipDirSquish");
 					}
 					canPlayAnim = false;
@@ -66,6 +67,7 @@ namespace Butthole.Settings
 					right = true;
 					if(canPlayAnim)
 					{
+						anim.Stop(true);
 						anim.Play("FlipDirSquish");
 					}
 					canPlayAnim = false;
