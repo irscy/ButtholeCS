@@ -7,10 +7,10 @@ namespace Butthole.Settings
 	class MoveController : Node2D
 	{
 		//objects
-		Node2D scene = null;
-		Node2D jinx = null;
-		Sprite jinxSprite = null;
-		AnimationPlayer anim = null;
+		Node2D scene;
+		Node2D jinx;
+		Sprite jinxSprite;
+		AnimationPlayer anim;
 		Vector2 xSpeed;
 
 		//variables
@@ -18,20 +18,20 @@ namespace Butthole.Settings
 		bool right;
 		bool canPlayAnim;
 
-		void SetObjectValues()
+		public void SetObjectValues()
 		{
 			scene = GetNode<Node2D>("/root/Main");
 			jinx = GetParent<Node2D>();
 			jinx.GlobalPosition = new Vector2(500, 360);
 			jinxSprite = jinx.GetChild<Sprite>(0);
 			anim = jinxSprite.GetChild<AnimationPlayer>(0);
+			canPlayAnim = true;
+			xSpeed = new Vector2(200, 0);
 		}
 		
 		public override void _Ready()
 		{
-			canPlayAnim = true;
-			xSpeed = new Vector2(200, 0);
-			SetObjectValues();	
+
 		}
 
 		public void EnableMoveControls(float delta)
