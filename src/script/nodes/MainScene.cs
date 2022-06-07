@@ -4,12 +4,11 @@ using Butthole;
 
 namespace Butthole.Nodes
 {
-	class MainScene : Jinx
+	class MainScene : Node2D
 	{
-		Node2D jinx;
 		public override void _Ready()
 		{
-			jinx = GetNode<Node2D>("/root/Main/JINX");
+			
 		}
 	}
 }
