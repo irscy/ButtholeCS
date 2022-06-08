@@ -9,9 +9,12 @@ namespace Butthole.Settings
 		//objects
 		Node2D scene;
 		Node2D jinx;
-		Sprite jinxSprite;
+		Sprite jinx_DefinedSprite;
+		Texture jinxSprite_horizontal;
+		Texture jinxSprite_up;
 		AnimationPlayer anim;
 		Vector2 xSpeed;
+		Vector2 ySpeed;
 
 		//variables
 		bool left;
@@ -23,15 +26,20 @@ namespace Butthole.Settings
 			scene = GetNode<Node2D>("/root/Main");
 			jinx = GetParent<Node2D>();
 			jinx.GlobalPosition = new Vector2(500, 360);
-			jinxSprite = jinx.GetChild<Sprite>(0);
-			anim = jinxSprite.GetChild<AnimationPlayer>(0);
+			jinx_DefinedSprite = jinx.GetChild<Sprite>(0);
+			jinxSprite_up = ResourceLoader.Load<Texture>("res://src/sprite/jinxSPRITE_UP.png");
+			jinxSprite_horizontal = ResourceLoader.Load<Texture>("res://src/sprite/jinxSPRITE.png");
+			jinx_DefinedSprite.Texture = jinxSprite_horizontal;
+			jinx_DefinedSprite.Scale = new Vector2(0.6f, 0.35f);
+			anim = jinx_DefinedSprite.GetChild<AnimationPlayer>(0);			
 			canPlayAnim = true;
 			xSpeed = new Vector2(200, 0);
+			ySpeed = new Vector2(0, 200);
 		}
 		
 		public override void _Ready()
 		{
-
+			
 		}
 
 		public void EnableMoveControls(float delta)
@@ -42,7 +50,8 @@ namespace Butthole.Settings
 				//on press
 				case {} when Input.IsActionPressed("Move Left") && !right:
 					jinx.GlobalPosition -= xSpeed * delta;
-					jinxSprite.FlipH = false;
+					jinx_DefinedSprite.Texture = jinxSprite_horizontal;
+					jinx_DefinedSprite.FlipH = false;
 					left = true;
 					if(canPlayAnim)
 					{
@@ -62,7 +71,8 @@ namespace Butthole.Settings
 				//on press
 				case {} when Input.IsActionPressed("Move Right") && !left:
 					jinx.GlobalPosition += xSpeed * delta;
-					jinxSprite.FlipH = true;
+					jinx_DefinedSprite.Texture = jinxSprite_horizontal;
+					jinx_DefinedSprite.FlipH = true;
 
 					right = true;
 					if(canPlayAnim)
@@ -78,7 +88,11 @@ namespace Butthole.Settings
 					right = false;
 					canPlayAnim = true;
 					break;
-				
+
+				case {} when Input.IsActionPressed("Move Up"):
+					jinx.GlobalPosition -= ySpeed * delta;		
+					jinx_DefinedSprite.Texture = jinxSprite_up;
+					break;		
 			}
 		} 
 	}

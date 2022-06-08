@@ -59,6 +59,10 @@ RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
 
 enabled=PoolStringArray( "res://addons/github-integration/plugin.cfg" )
 
+[global]
+
+window=false
+
 [input]
 
 "Move Left"={

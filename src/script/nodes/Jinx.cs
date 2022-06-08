@@ -12,6 +12,7 @@ namespace Butthole.Nodes
 		public override void _Ready()
 		{
 			Mover = (MoveController)GetNode<Node2D>("/root/Main/JINX/MoveController");
+			Mover = (MoveController)GetNode<Node2D>("/root/Main/JINX/MoveController");
 			Mover.SetObjectValues();
 			Scale.x.Equals(new Vector2(0.6f, 0.35f));
 		}

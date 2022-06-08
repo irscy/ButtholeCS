@@ -35,7 +35,7 @@ tracks/1/keys = {
 script = ExtResource( 2 )
 
 [node name="JinxSprite" type="Sprite" parent="."]
-scale = Vector2( 0.6, 0.35 )
+scale = Vector2( 0.6, 0.25 )
 texture = ExtResource( 1 )
 centered = false
 offset = Vector2( -209, -420.037 )
