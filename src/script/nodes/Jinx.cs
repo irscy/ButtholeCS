@@ -13,11 +13,7 @@ namespace Butthole.Nodes
 
 		public override void _Ready()
 		{
-			Mover = (MoveController)GetNode<Node2D>("/root/Main/JINX/MoveController");
-			Mover.definedNode = GetNode<Node2D>(".");
-			Mover.upSpr = JinxUp;
-			Mover.horizSpr = JinxHoriz;
-			Mover.SetObjectValues();
+			SetMoverValues();
 			Scale.x.Equals(new Vector2(0.6f, 0.35f));
 		}
 
@@ -25,6 +21,13 @@ namespace Butthole.Nodes
 		{
 			Mover.EnableMoveControls(delta);
 		}	
+
+		void SetMoverValues()
+		{
+			Mover = (MoveController)GetNode<Node2D>("/root/Main/JINX/MoveController");
+			Mover.definedNode = GetNode<Node2D>(".");
+			Mover.SetObjectValues();
+		}
 	}
 }
 

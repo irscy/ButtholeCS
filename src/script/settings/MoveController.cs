@@ -5,11 +5,24 @@ namespace Butthole.Settings
 {
 	class MoveController : Node2D
 	{
+		/* 
+		NOTES (IN ORDER):
+		--------visual--------
+		- add MoveController script under a node and set MoveController object's value to that node
+		- set definedNode 's value to a node
+		- add sprite under definedNode as child index 0
+		- instance FlipDirSquish scene under sprite as child index 0
+		-------with object-----
+		- set defined node (definedNode)
+		- call SetObjectValues under _Ready()
+		*/
+
 		//objects
 		public Node2D definedNode { get; set; }
-		public Texture upSpr { get; set; }
-		public Texture downSpr { get; set; }
-		public Texture horizSpr { get; set; }
+		public Sprite definedNode_Sprite { get; set; }
+		[Export] public Texture upSpr { get; set; }
+		[Export] public Texture downSpr { get; set; }
+		[Export] public Texture horizSpr { get; set; }
 		AnimationPlayer anim;
 		Vector2 xSpeed;
 		Vector2 ySpeed;
