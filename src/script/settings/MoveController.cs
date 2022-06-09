@@ -14,6 +14,8 @@ namespace Butthole.Settings
 		- instance FlipDirSquish scene under sprite as child index 0
 		-------with object-----
 		- set defined node (definedNode)
+		- set defined sprite (definedNode_sprite)
+		- set anim value (anim)
 		- call SetObjectValues under _Ready()
 		*/
 
@@ -23,7 +25,8 @@ namespace Butthole.Settings
 		[Export] public Texture upSpr { get; set; }
 		[Export] public Texture downSpr { get; set; }
 		[Export] public Texture horizSpr { get; set; }
-		AnimationPlayer anim;
+		public AnimationPlayer anim { get; set; } 
+
 		Vector2 xSpeed;
 		Vector2 ySpeed;
 
@@ -52,8 +55,8 @@ namespace Butthole.Settings
 				//on press
 				case {} when Input.IsActionPressed("Move Left") && !right:
 					definedNode.GlobalPosition -= xSpeed * delta;
-					((Sprite)definedNode).Texture = horizSpr;
-					((Sprite)definedNode).FlipH = false;
+					((Sprite)definedNode_Sprite).Texture = horizSpr;
+					((Sprite)definedNode_Sprite).FlipH = false;
 					left = true;
 					if(canPlayAnim)
 					{
@@ -73,8 +76,8 @@ namespace Butthole.Settings
 				//on press
 				case {} when Input.IsActionPressed("Move Right") && !left:
 					definedNode.GlobalPosition += xSpeed * delta;
-					((Sprite)definedNode).Texture = horizSpr;
-					((Sprite)definedNode).FlipH = true;
+					((Sprite)definedNode_Sprite).Texture = horizSpr;
+					((Sprite)definedNode_Sprite).FlipH = true;
 
 					right = true;
 					if(canPlayAnim)
@@ -93,7 +96,7 @@ namespace Butthole.Settings
 
 				case {} when Input.IsActionPressed("Move Up"):
 					definedNode.GlobalPosition -= ySpeed * delta;		
-					((Sprite)definedNode).Texture = upSpr;
+					((Sprite)definedNode_Sprite).Texture = upSpr;
 					break;		
 			}
 		} 

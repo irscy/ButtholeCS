@@ -26,6 +26,8 @@ namespace Butthole.Nodes
 		{
 			Mover = (MoveController)GetNode<Node2D>("/root/Main/JINX/MoveController");
 			Mover.definedNode = GetNode<Node2D>(".");
+			Mover.definedNode_Sprite = GetChild<Sprite>(0);
+			Mover.anim = Mover.definedNode_Sprite.GetChild<AnimationPlayer>(0);
 			Mover.SetObjectValues();
 		}
 	}
