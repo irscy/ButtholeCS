@@ -12,20 +12,24 @@ namespace Butthole.Settings
 		- set definedNode 's value to a node
 		- add sprite under definedNode as child index 0
 		- instance FlipDirSquish scene under sprite as child index 0
+		- instance FlipDirUp scene under sprite as child index 1
 		-------with object-----
 		- set defined node (definedNode)
 		- set defined sprite (definedNode_sprite)
-		- set anim value (anim)
+		- set animation values (FlipDirSquish, FLipDirUp)
 		- call SetObjectValues under _Ready()
 		*/
 
 		//objects
 		public Node2D definedNode { get; set; }
 		public Sprite definedNode_Sprite { get; set; }
+
 		[Export] public Texture upSpr { get; set; }
 		[Export] public Texture downSpr { get; set; }
 		[Export] public Texture horizSpr { get; set; }
-		public AnimationPlayer anim { get; set; } 
+
+		public AnimationPlayer FlipDirSquish { get; set; } 
+		public AnimationPlayer FlipDirUp { get; set; }
 
 		Vector2 xSpeed;
 		Vector2 ySpeed;
@@ -55,13 +59,13 @@ namespace Butthole.Settings
 				//on press
 				case {} when Input.IsActionPressed("Move Left") && !right:
 					definedNode.GlobalPosition -= xSpeed * delta;
-					((Sprite)definedNode_Sprite).Texture = horizSpr;
-					((Sprite)definedNode_Sprite).FlipH = false;
+					definedNode_Sprite.Texture = horizSpr;
+					definedNode_Sprite.FlipH = false;
 					left = true;
 					if(canPlayAnim)
 					{
-						anim.Stop(true);
-						anim.Play("FlipDirSquish");
+						FlipDirSquish.Stop(true);
+						FlipDirSquish.Play("FlipDirSquish");
 					}
 					canPlayAnim = false;
 					break;
@@ -76,14 +80,14 @@ namespace Butthole.Settings
 				//on press
 				case {} when Input.IsActionPressed("Move Right") && !left:
 					definedNode.GlobalPosition += xSpeed * delta;
-					((Sprite)definedNode_Sprite).Texture = horizSpr;
-					((Sprite)definedNode_Sprite).FlipH = true;
+					definedNode_Sprite.Texture = horizSpr;
+					definedNode_Sprite.FlipH = true;
 
 					right = true;
 					if(canPlayAnim)
 					{
-						anim.Stop(true);
-						anim.Play("FlipDirSquish");
+						FlipDirSquish.Stop(true);
+						FlipDirSquish.Play("FlipDirSquish");
 					}
 					canPlayAnim = false;
 					break;
@@ -96,7 +100,7 @@ namespace Butthole.Settings
 
 				case {} when Input.IsActionPressed("Move Up"):
 					definedNode.GlobalPosition -= ySpeed * delta;		
-					((Sprite)definedNode_Sprite).Texture = upSpr;
+					definedNode_Sprite.Texture = upSpr;
 					break;		
 			}
 		} 
