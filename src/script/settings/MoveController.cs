@@ -59,15 +59,16 @@ namespace Butthole.Settings
 				//on press
 				case {} when Input.IsActionPressed("Move Left") && !right:
 					definedNode.GlobalPosition -= xSpeed * delta;
-					definedNode_Sprite.Texture = horizSpr;
-					definedNode_Sprite.FlipH = false;
-					left = true;
 					if(canPlayAnim)
 					{
 						FlipDirSquish.Stop(true);
 						FlipDirSquish.Play("FlipDirSquish");
 					}
 					canPlayAnim = false;
+					definedNode_Sprite.Texture = horizSpr;
+					definedNode_Sprite.FlipH = false;
+					left = true;
+				
 					break;
 
 				//on release
@@ -80,16 +81,15 @@ namespace Butthole.Settings
 				//on press
 				case {} when Input.IsActionPressed("Move Right") && !left:
 					definedNode.GlobalPosition += xSpeed * delta;
-					definedNode_Sprite.Texture = horizSpr;
-					definedNode_Sprite.FlipH = true;
-
-					right = true;
 					if(canPlayAnim)
 					{
 						FlipDirSquish.Stop(true);
 						FlipDirSquish.Play("FlipDirSquish");
 					}
 					canPlayAnim = false;
+					definedNode_Sprite.Texture = horizSpr;
+					definedNode_Sprite.FlipH = true;
+					right = true;		
 					break;
 				
 				//on release
@@ -98,10 +98,22 @@ namespace Butthole.Settings
 					canPlayAnim = true;
 					break;
 
+				//UP MOVEMENT
+				//on press
 				case {} when Input.IsActionPressed("Move Up"):
 					definedNode.GlobalPosition -= ySpeed * delta;		
 					definedNode_Sprite.Texture = upSpr;
-					break;		
+					if(canPlayAnim)
+					{
+						FlipDirUp.Stop(true);
+						FlipDirUp.Play("FlipDirUp");
+					}
+					canPlayAnim = false;
+					break;	
+
+				case {} when Input.IsActionJustReleased("Move Up"):
+					canPlayAnim = true;	
+					break;
 			}
 		} 
 	}

@@ -14,7 +14,7 @@ namespace Butthole.Nodes
 		public override void _Ready()
 		{
 			SetMoverValues();
-			Scale.x.Equals(new Vector2(0.6f, 0.35f));
+			Mover.definedNode_Sprite.Scale.x.Equals(new Vector2(0.6f, 0.35f));
 		}
 
 		public override void _PhysicsProcess(float delta)
@@ -27,7 +27,8 @@ namespace Butthole.Nodes
 			Mover = (MoveController)GetNode<Node2D>("/root/Main/JINX/MoveController");
 			Mover.definedNode = GetNode<Node2D>(".");
 			Mover.definedNode_Sprite = GetChild<Sprite>(0);
-			Mover.anim = Mover.definedNode_Sprite.GetChild<AnimationPlayer>(0);
+			Mover.FlipDirSquish = Mover.definedNode_Sprite.GetChild<AnimationPlayer>(0);
+			Mover.FlipDirUp = Mover.definedNode_Sprite.GetChild<AnimationPlayer>(1);
 			Mover.SetObjectValues();
 		}
 	}
