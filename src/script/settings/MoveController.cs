@@ -1,17 +1,15 @@
 using Godot;
 using Butthole;
-using System;
 
 namespace Butthole.Settings
 {
 	class MoveController : Node2D
 	{
 		//objects
-		Node2D scene;
-		Node2D jinx;
-		Sprite jinx_DefinedSprite;
-		Texture jinxSprite_horizontal;
-		Texture jinxSprite_up;
+		public Node2D definedNode { get; set; }
+		public Texture upSpr { get; set; }
+		public Texture downSpr { get; set; }
+		public Texture horizSpr { get; set; }
 		AnimationPlayer anim;
 		Vector2 xSpeed;
 		Vector2 ySpeed;
@@ -22,16 +20,7 @@ namespace Butthole.Settings
 		bool canPlayAnim;
 
 		public void SetObjectValues()
-		{
-			scene = GetNode<Node2D>("/root/Main");
-			jinx = GetParent<Node2D>();
-			jinx.GlobalPosition = new Vector2(500, 360);
-			jinx_DefinedSprite = jinx.GetChild<Sprite>(0);
-			jinxSprite_up = ResourceLoader.Load<Texture>("res://src/sprite/jinxSPRITE_UP.png");
-			jinxSprite_horizontal = ResourceLoader.Load<Texture>("res://src/sprite/jinxSPRITE.png");
-			jinx_DefinedSprite.Texture = jinxSprite_horizontal;
-			jinx_DefinedSprite.Scale = new Vector2(0.6f, 0.35f);
-			anim = jinx_DefinedSprite.GetChild<AnimationPlayer>(0);			
+		{	
 			canPlayAnim = true;
 			xSpeed = new Vector2(200, 0);
 			ySpeed = new Vector2(0, 200);
@@ -49,9 +38,9 @@ namespace Butthole.Settings
 				//LEFT MOVEMENT
 				//on press
 				case {} when Input.IsActionPressed("Move Left") && !right:
-					jinx.GlobalPosition -= xSpeed * delta;
-					jinx_DefinedSprite.Texture = jinxSprite_horizontal;
-					jinx_DefinedSprite.FlipH = false;
+					definedNode.GlobalPosition -= xSpeed * delta;
+					((Sprite)definedNode).Texture = horizSpr;
+					((Sprite)definedNode).FlipH = false;
 					left = true;
 					if(canPlayAnim)
 					{
@@ -70,9 +59,9 @@ namespace Butthole.Settings
 				//RIGHT MOVEMENT
 				//on press
 				case {} when Input.IsActionPressed("Move Right") && !left:
-					jinx.GlobalPosition += xSpeed * delta;
-					jinx_DefinedSprite.Texture = jinxSprite_horizontal;
-					jinx_DefinedSprite.FlipH = true;
+					definedNode.GlobalPosition += xSpeed * delta;
+					((Sprite)definedNode).Texture = horizSpr;
+					((Sprite)definedNode).FlipH = true;
 
 					right = true;
 					if(canPlayAnim)
@@ -90,8 +79,8 @@ namespace Butthole.Settings
 					break;
 
 				case {} when Input.IsActionPressed("Move Up"):
-					jinx.GlobalPosition -= ySpeed * delta;		
-					jinx_DefinedSprite.Texture = jinxSprite_up;
+					definedNode.GlobalPosition -= ySpeed * delta;		
+					((Sprite)definedNode).Texture = upSpr;
 					break;		
 			}
 		} 
