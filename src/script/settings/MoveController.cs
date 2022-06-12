@@ -38,15 +38,17 @@ namespace Butthole.Settings
 		bool left;
 		bool right;
 		bool up;
+		bool down;
 		bool horiz;
 		bool vertic;
 		bool canPlayHorizAnim;
-		bool canPlayVerticAnim;
+		bool canPlayUpAnim;
+		bool canPlayDownAnim;
 
 		public void SetObjectValues()
 		{
 			canPlayHorizAnim = true;
-			canPlayVerticAnim = true;
+			canPlayUpAnim = true;
 			xSpeed = new Vector2(200, 0);
 			ySpeed = new Vector2(0, 200);
 		}
@@ -112,12 +114,12 @@ namespace Butthole.Settings
 					definedNode.GlobalPosition -= ySpeed * delta;
 					up = true;
 					vertic = true;
-					if (canPlayVerticAnim)
+					if (canPlayUpAnim)
 					{
 						FlipDirUp.Stop(true);
 						FlipDirUp.Play("FlipDirUp");
 					}
-					canPlayVerticAnim = false;
+					canPlayUpAnim = false;
 					definedNode_Sprite.Texture = upSpr;
 					break;
 
@@ -125,7 +127,29 @@ namespace Butthole.Settings
 				case {} when Input.IsActionJustReleased("Move Up"):
 					up = false;
 					vertic = false;
-					canPlayVerticAnim = true;
+					canPlayUpAnim = true;
+					break;
+
+				//DOWN MOVEMENT
+				//on press
+				case {} when Input.IsActionPressed("Move Down"):
+					definedNode.GlobalPosition += ySpeed * delta;
+					down = true;
+					vertic = true;
+					if(canPlayDownAnim)
+					{
+						FlipDirUp.Stop(true);
+						FlipDirUp.Play("FlipDirUp");
+					}
+					canPlayDownAnim = false;
+					definedNode_Sprite.Texture = downSpr;
+					break;
+				
+				//on release
+				case {} when Input.IsActionJustReleased("Move Down"):
+					down = false;
+					vertic = false;
+					canPlayDownAnim = true;
 					break;
 			}
 		}
