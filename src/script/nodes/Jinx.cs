@@ -29,6 +29,7 @@ namespace Butthole.Nodes
 			Mover.definedNode_Sprite = GetChild<Sprite>(0);
 			Mover.FlipDirSquish = Mover.definedNode_Sprite.GetChild<AnimationPlayer>(0);
 			Mover.FlipDirUp = Mover.definedNode_Sprite.GetChild<AnimationPlayer>(1);
+			Mover.FlipDirDown = Mover.definedNode_Sprite.GetChild<AnimationPlayer>(2);			
 			Mover.SetObjectValues();
 		}
 	}
