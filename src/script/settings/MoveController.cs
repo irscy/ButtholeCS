@@ -3,9 +3,9 @@ using Butthole;
 
 namespace Butthole.Settings
 {
-    class MoveController : Node2D
-    {
-        /* 
+	class MoveController : Node2D
+	{
+		/* 
 		NOTES (IN ORDER):
 		--------godot--------
 		- add MoveController script under a node and set MoveController object's value to that node
@@ -21,139 +21,139 @@ namespace Butthole.Settings
 		- call SetObjectValues under _Ready()
 		*/
 
-        //objects
-        public Node2D definedNode { get; set; }
-        public Sprite definedNode_Sprite { get; set; }
+		//objects
+		public Node2D definedNode { get; set; }
+		public Sprite definedNode_Sprite { get; set; }
 
-        [Export] public Texture upSpr { get; set; }
-        [Export] public Texture downSpr { get; set; }
-        [Export] public Texture horizSpr { get; set; }
+		[Export] public Texture upSpr { get; set; }
+		[Export] public Texture downSpr { get; set; }
+		[Export] public Texture horizSpr { get; set; }
 
-        public AnimationPlayer FlipDirSquish { get; set; }
-        public AnimationPlayer FlipDirUp { get; set; }
-        public AnimationPlayer FlipDirDown { get; set; }
+		public AnimationPlayer FlipDirSquish { get; set; }
+		public AnimationPlayer FlipDirUp { get; set; }
+		public AnimationPlayer FlipDirDown { get; set; }
 
-        Vector2 xSpeed;
-        Vector2 ySpeed;
+		Vector2 xSpeed;
+		Vector2 ySpeed;
 
-        //variables
-        bool left;
-        bool right;
-        bool up;
-        bool down;
-        bool horiz;
-        bool vertic;
-        bool canPlayHorizAnim;
-        bool canPlayUpAnim;
-        bool canPlayDownAnim;
+		//variables
+		bool left;
+		bool right;
+		bool up;
+		bool down;
+		bool horiz;
+		bool vertic;
+		bool canPlayHorizAnim;
+		bool canPlayUpAnim;
+		bool canPlayDownAnim;
 
-        public void SetObjectValues()
-        {
-            canPlayHorizAnim = true;
-            canPlayUpAnim = true;
-            xSpeed = new Vector2(200, 0);
-            ySpeed = new Vector2(0, 200);
-        }
+		public void SetObjectValues()
+		{
+			canPlayHorizAnim = true;
+			canPlayUpAnim = true;
+			xSpeed = new Vector2(200, 0);
+			ySpeed = new Vector2(0, 200);
+		}
 
-        public override void _Ready()
-        {
+		public override void _Ready()
+		{
 
-        }
+		}
 
-        public void EnableMoveControls(float delta)
-        {
-            switch (this)
-            {
-                //LEFT MOVEMENT
-                //on press
-                case { } when Input.IsActionPressed("Move Left") && !right && !vertic:
-                    definedNode.GlobalPosition -= xSpeed * delta;
-                    left = true;
-                    horiz = true;
-                    if (canPlayHorizAnim)
-                    {
-                        FlipDirSquish.Stop(true);
-                        FlipDirSquish.Play("FlipDirSquish");
-                    }
-                    canPlayHorizAnim = false;
-                    definedNode_Sprite.Texture = horizSpr;
-                    definedNode_Sprite.FlipH = false;
-                    break;
+		public void EnableMoveControls(float delta)
+		{
+			switch (this)
+			{
+				//LEFT MOVEMENT
+				//on press
+				case { } when Input.IsActionPressed("Move Left") && !right && !vertic:
+					definedNode.GlobalPosition -= xSpeed * delta;
+					left = true;
+					horiz = true;
+					if (canPlayHorizAnim)
+					{
+						FlipDirSquish.Stop(true);
+						FlipDirSquish.Play("FlipDirSquish");
+					}
+					canPlayHorizAnim = false;
+					definedNode_Sprite.Texture = horizSpr;
+					definedNode_Sprite.FlipH = false;
+					break;
 
-                //on release
-                case { } when Input.IsActionJustReleased("Move Left"):
-                    left = false;
-                    horiz = false;
-                    canPlayHorizAnim = true;
-                    break;
+				//on release
+				case { } when Input.IsActionJustReleased("Move Left"):					
+					canPlayHorizAnim = true;
+					left = false;
+					horiz = false;
+					break;
 
-                //RIGHT MOVEMENT
-                //on press
-                case { } when Input.IsActionPressed("Move Right") && !left && !vertic:
-                    definedNode.GlobalPosition += xSpeed * delta;
-                    right = true;
-                    horiz = true;
-                    if (canPlayHorizAnim)
-                    {
-                        FlipDirSquish.Stop(true);
-                        FlipDirSquish.Play("FlipDirSquish");
-                    }
-                    canPlayHorizAnim = false;
-                    definedNode_Sprite.Texture = horizSpr;
-                    definedNode_Sprite.FlipH = true;
-                    break;
+				//RIGHT MOVEMENT
+				//on press
+				case { } when Input.IsActionPressed("Move Right") && !left && !vertic:
+					definedNode.GlobalPosition += xSpeed * delta;
+					right = true;
+					horiz = true;
+					if (canPlayHorizAnim)
+					{
+						FlipDirSquish.Stop(true);
+						FlipDirSquish.Play("FlipDirSquish");
+					}
+					canPlayHorizAnim = false;
+					definedNode_Sprite.Texture = horizSpr;
+					definedNode_Sprite.FlipH = true;
+					break;
 
-                //on release
-                case { } when Input.IsActionJustReleased("Move Right"):
-                    right = false;
-                    horiz = false;
-                    canPlayHorizAnim = true;
-                    break;
+				//on release
+				case { } when Input.IsActionJustReleased("Move Right"):	
+					canPlayHorizAnim = true;
+					right = false;
+					horiz = false;
+					break;
 
-                //UP MOVEMENT
-                //on press
-                case { } when Input.IsActionPressed("Move Up"):
-                    definedNode.GlobalPosition -= ySpeed * delta;
-                    up = true;
-                    vertic = true;
-                    if (canPlayUpAnim)
-                    {
-                        FlipDirUp.Stop(true);
-                        FlipDirUp.Play("FlipDirUp");
-                    }
-                    canPlayUpAnim = false;
-                    definedNode_Sprite.Texture = upSpr;
-                    break;
+				//UP MOVEMENT
+				//on press
+				case { } when Input.IsActionPressed("Move Up"):
+					definedNode.GlobalPosition -= ySpeed * delta;
+					up = true;
+					vertic = true;
+					if (canPlayUpAnim)
+					{
+						FlipDirUp.Stop(true);
+						FlipDirUp.Play("FlipDirUp");
+					}
+					canPlayUpAnim = false;
+					definedNode_Sprite.Texture = upSpr;
+					break;
 
-                //on release
-                case { } when Input.IsActionJustReleased("Move Up"):
-                    up = false;
-                    vertic = false;
-                    canPlayUpAnim = true;
-                    break;
+				//on release
+				case { } when Input.IsActionJustReleased("Move Up"):	
+					canPlayUpAnim = true;
+					up = false;
+					vertic = false;
+					break;
 
-                //DOWN MOVEMENT
-                //on press
-                case { } when Input.IsActionPressed("Move Down"):
-                    definedNode.GlobalPosition += ySpeed * delta;
-                    down = true;
-                    vertic = true;
-                    if (canPlayDownAnim)
-                    {
-                        FlipDirDown.Stop(true);
-                        FlipDirDown.Play("FlipDirDown");
-                    }
-                    canPlayDownAnim = false;
-                    definedNode_Sprite.Texture = downSpr;
-                    break;
+				//DOWN MOVEMENT
+				//on press
+				case { } when Input.IsActionPressed("Move Down"):
+					definedNode.GlobalPosition += ySpeed * delta;
+					down = true;
+					vertic = true;
+					if (canPlayDownAnim)
+					{
+						FlipDirDown.Stop(true);
+						FlipDirDown.Play("FlipDirDown");
+					}
+					canPlayDownAnim = false;
+					definedNode_Sprite.Texture = downSpr;
+					break;
 
-                //on release
-                case { } when Input.IsActionJustReleased("Move Down"):
-                    down = false;
-                    vertic = false;
-                    canPlayDownAnim = true;
-                    break;
-            }
-        }
-    }
+				//on release
+				case { } when Input.IsActionJustReleased("Move Down"):
+					canPlayDownAnim = true;
+					down = false;
+					vertic = false;
+					break;
+			}
+		}
+	}
 }
