@@ -60,6 +60,13 @@ namespace Butthole.Settings
 
 		}
 
+		void ResetAllAnims()
+		{
+			FlipDirDown.Stop(true);
+			FlipDirUp.Stop(true);
+			FlipDirSquish.Stop(true);
+		}
+
 		public void EnableMoveControls(float delta)
 		{
 			switch (this)
@@ -72,7 +79,7 @@ namespace Butthole.Settings
 					horiz = true;
 					if (canPlayHorizAnim)
 					{
-						FlipDirSquish.Stop(true);
+						ResetAllAnims();
 						FlipDirSquish.Play("FlipDirSquish");
 					}
 					canPlayHorizAnim = false;
@@ -95,7 +102,7 @@ namespace Butthole.Settings
 					horiz = true;
 					if (canPlayHorizAnim)
 					{
-						FlipDirSquish.Stop(true);
+						ResetAllAnims();
 						FlipDirSquish.Play("FlipDirSquish");
 					}
 					canPlayHorizAnim = false;
@@ -112,13 +119,13 @@ namespace Butthole.Settings
 
 				//UP MOVEMENT
 				//on press
-				case { } when Input.IsActionPressed("Move Up"):
+				case { } when Input.IsActionPressed("Move Up") && !down:
 					definedNode.GlobalPosition -= ySpeed * delta;
 					up = true;
 					vertic = true;
 					if (canPlayUpAnim)
 					{
-						FlipDirUp.Stop(true);
+						ResetAllAnims();
 						FlipDirUp.Play("FlipDirUp");
 					}
 					canPlayUpAnim = false;
@@ -134,13 +141,13 @@ namespace Butthole.Settings
 
 				//DOWN MOVEMENT
 				//on press
-				case { } when Input.IsActionPressed("Move Down"):
+				case { } when Input.IsActionPressed("Move Down") && !up:
 					definedNode.GlobalPosition += ySpeed * delta;
 					down = true;
 					vertic = true;
 					if (canPlayDownAnim)
 					{
-						FlipDirDown.Stop(true);
+						ResetAllAnims();
 						FlipDirDown.Play("FlipDirDown");
 					}
 					canPlayDownAnim = false;
