@@ -14,7 +14,6 @@ script = ExtResource( 2 )
 position = Vector2( 500, 360 )
 
 [node name="MoveController" type="Node2D" parent="JINX"]
-position = Vector2( -500, -300 )
 script = ExtResource( 3 )
 upSpr = ExtResource( 5 )
 downSpr = ExtResource( 6 )

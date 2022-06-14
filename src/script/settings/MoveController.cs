@@ -51,6 +51,7 @@ namespace Butthole.Settings
 		{
 			canPlayHorizAnim = true;
 			canPlayUpAnim = true;
+			canPlayDownAnim = true;
 			xSpeed = new Vector2(200, 0);
 			ySpeed = new Vector2(0, 200);
 		}
