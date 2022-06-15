@@ -1,7 +1,7 @@
 using Godot;
 using Butthole;
 
-namespace Butthole
+namespace Butthole.Settings
 {
     class WeaponAnchor : Node2D
     {
