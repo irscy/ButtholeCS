@@ -5,33 +5,15 @@ namespace Butthole.Settings
 {
 	class MoveController : Node2D
 	{
-		/* 
-		NOTES (IN ORDER):
-		--------godot--------
-		- add MoveController script under a node and set MoveController object's value to that node
-		- add sprite under definedNode as child index 0
-		- set texture values under MoveController node
-		- instance FlipDirSquish scene under sprite as child index 0
-		- instance FlipDirUp scene under sprite as child index 1
-		- instance FlipDirDown scene under sprite as child index 2
-		------with object-----
-		- set defined node (definedNode)
-		- set defined sprite (definedNode_sprite)
-		- set animation values (FlipDirSquish, FLipDirUp)
-		- call SetObjectValues under _Ready()
-		*/
 
 		//objects
-		public Node2D definedNode { get; set; }
-		public Sprite definedNode_Sprite { get; set; }
+		Sprite definedSprite;
 
-		[Export] public Texture upSpr { get; set; }
-		[Export] public Texture downSpr { get; set; }
-		[Export] public Texture horizSpr { get; set; }
+		[Export] Texture upSpr;
+		[Export] Texture downSpr;
+		[Export] Texture horizSpr;
 
-		public AnimationPlayer FlipDirSquish { get; set; }
-		public AnimationPlayer FlipDirUp { get; set; }
-		public AnimationPlayer FlipDirDown { get; set; }
+		AnimationPlayer FlipAnim;
 
 		Vector2 xSpeed;
 		Vector2 ySpeed;
@@ -49,6 +31,8 @@ namespace Butthole.Settings
 
 		public void SetObjectValues()
 		{
+			definedSprite = GetChild<Sprite>(0);
+			FlipAnim = definedSprite.GetChild<AnimationPlayer>(0);
 			canPlayHorizAnim = true;
 			canPlayUpAnim = true;
 			canPlayDownAnim = true;
@@ -58,14 +42,17 @@ namespace Butthole.Settings
 
 		public override void _Ready()
 		{
+			SetObjectValues();
+		}
 
+		public override void _PhysicsProcess(float delta)
+		{
+			EnableMoveControls(delta);
 		}
 
 		void ResetAllAnims()
 		{
-			FlipDirDown.Stop(true);
-			FlipDirUp.Stop(true);
-			FlipDirSquish.Stop(true);
+			FlipAnim.Stop(true);
 		}
 
 		public void EnableMoveControls(float delta)
@@ -75,17 +62,17 @@ namespace Butthole.Settings
 				//LEFT MOVEMENT
 				//on press
 				case { } when Input.IsActionPressed("Move Left") && !right && !vertic:
-					definedNode.GlobalPosition -= xSpeed * delta;
+					GlobalPosition -= xSpeed * delta;
 					left = true;
 					horiz = true;
 					if (canPlayHorizAnim)
 					{
 						ResetAllAnims();
-						FlipDirSquish.Play("FlipDirSquish");
+						FlipAnim.Play("FlipDirSquish");
 					}
 					canPlayHorizAnim = false;
-					definedNode_Sprite.Texture = horizSpr;
-					definedNode_Sprite.FlipH = false;
+					definedSprite.Texture = horizSpr;
+					definedSprite.FlipH = false;
 					break;
 
 				//on release
@@ -98,17 +85,17 @@ namespace Butthole.Settings
 				//RIGHT MOVEMENT
 				//on press
 				case { } when Input.IsActionPressed("Move Right") && !left && !vertic:
-					definedNode.GlobalPosition += xSpeed * delta;
+					GlobalPosition += xSpeed * delta;
 					right = true;
 					horiz = true;
 					if (canPlayHorizAnim)
 					{
 						ResetAllAnims();
-						FlipDirSquish.Play("FlipDirSquish");
+						FlipAnim.Play("FlipDirSquish");
 					}
 					canPlayHorizAnim = false;
-					definedNode_Sprite.Texture = horizSpr;
-					definedNode_Sprite.FlipH = true;
+					definedSprite.Texture = horizSpr;
+					definedSprite.FlipH = true;
 					break;
 
 				//on release
@@ -121,16 +108,16 @@ namespace Butthole.Settings
 				//UP MOVEMENT
 				//on press
 				case { } when Input.IsActionPressed("Move Up") && !down:
-					definedNode.GlobalPosition -= ySpeed * delta;
+					GlobalPosition -= ySpeed * delta;
 					up = true;
 					vertic = true;
 					if (canPlayUpAnim)
 					{
 						ResetAllAnims();
-						FlipDirUp.Play("FlipDirUp");
+						FlipAnim.Play("FlipDirUp");
 					}
 					canPlayUpAnim = false;
-					definedNode_Sprite.Texture = upSpr;
+					definedSprite.Texture = upSpr;
 					break;
 
 				//on release
@@ -143,16 +130,16 @@ namespace Butthole.Settings
 				//DOWN MOVEMENT
 				//on press
 				case { } when Input.IsActionPressed("Move Down") && !up:
-					definedNode.GlobalPosition += ySpeed * delta;
+					GlobalPosition += ySpeed * delta;
 					down = true;
 					vertic = true;
 					if (canPlayDownAnim)
 					{
 						ResetAllAnims();
-						FlipDirDown.Play("FlipDirDown");
+						FlipAnim.Play("FlipDirDown");
 					}
 					canPlayDownAnim = false;
-					definedNode_Sprite.Texture = downSpr;
+					definedSprite.Texture = downSpr;
 					break;
 
 				//on release

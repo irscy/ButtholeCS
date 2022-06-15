@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://src/fx/anim/FlipDirUp.tres" type="Animation" id=1]
-
-[node name="FlipDirUp" type="AnimationPlayer"]
-anims/FlipDirUp = ExtResource( 1 )

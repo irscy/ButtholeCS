@@ -1,4 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/fx/anim/FlipDirUp.tres" type="Animation" id=1]
+[ext_resource path="res://src/fx/anim/FlipDirDown.tres" type="Animation" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "FlipDirSquish"
@@ -67,7 +70,9 @@ tracks/1/keys = {
 "values": [ 0.0 ]
 }
 
-[node name="FlipDirSquish" type="AnimationPlayer"]
+[node name="FlipAnim" type="AnimationPlayer"]
 playback_speed = 0.6
+anims/FlipDirDown = ExtResource( 2 )
 anims/FlipDirSquish = SubResource( 1 )
+anims/FlipDirUp = ExtResource( 1 )
 anims/RESET = SubResource( 2 )
