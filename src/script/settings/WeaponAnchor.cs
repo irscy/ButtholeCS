@@ -17,11 +17,20 @@ namespace Butthole
         }
         public override void _PhysicsProcess(float delta)
         {
+            //Check if the jinx sprite is flipped or not.
+            //if not flipped
             if(!((Sprite)JinxSprite).FlipH)
             {
                 Position = new Vector2(-14.972f, -38);
-                ((Sprite)StickSprite).FlipH = true;
+                StickSprite.Scale = new Vector2(0.3f, 0.3f);
                 RotationDegrees = 11;
+            }
+            //if flipped
+            if(((Sprite)JinxSprite).FlipH)
+            {
+                Position = new Vector2(37.676f, -38);
+                StickSprite.Scale = new Vector2(-0.3f, 0.3f);
+                RotationDegrees = -11;
             }
         }
     }
