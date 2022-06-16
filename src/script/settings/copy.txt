@@ -1,18 +1,4 @@
-        public void RunAnchor(float delta)
-        {
-            //Check if the jinx sprite is flipped or not.
-            //if not flipped
-            if (!weaponHolderSprite.FlipH)
-            {
-                definedWeapon.Position = new Vector2(-14.972f, -38);
-                weaponSprite.Scale = new Vector2(0.3f, 0.3f);
-                RotationDegrees = 11;
-            }
-            //if flipped
-            if (weaponHolderSprite.FlipH)
-            {
-                definedWeapon.Position = new Vector2(37.676f, -38);
-                weaponSprite.Scale = new Vector2(-0.3f, 0.3f);
-                definedWeapon.RotationDegrees = -11;
-            }
-        }
+-24
+-40
+
+11

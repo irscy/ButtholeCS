@@ -18,7 +18,7 @@ namespace Butthole.Settings
 		Vector2 xSpeed;
 		Vector2 ySpeed;
 
-		//variables
+		//fields
 		bool left;
 		bool right;
 		bool up;
@@ -63,6 +63,7 @@ namespace Butthole.Settings
 				//on press
 				case { } when Input.IsActionPressed("Move Left") && !right && !vertic:
 					GlobalPosition -= xSpeed * delta;
+					Scale = new Vector2(1, 1);
 					left = true;
 					horiz = true;
 					if (canPlayHorizAnim)
@@ -72,7 +73,6 @@ namespace Butthole.Settings
 					}
 					canPlayHorizAnim = false;
 					definedSprite.Texture = horizSpr;
-					definedSprite.FlipH = false;
 					break;
 
 				//on release
@@ -86,6 +86,7 @@ namespace Butthole.Settings
 				//on press
 				case { } when Input.IsActionPressed("Move Right") && !left && !vertic:
 					GlobalPosition += xSpeed * delta;
+					Scale = new Vector2(-1, 1);
 					right = true;
 					horiz = true;
 					if (canPlayHorizAnim)
@@ -95,7 +96,6 @@ namespace Butthole.Settings
 					}
 					canPlayHorizAnim = false;
 					definedSprite.Texture = horizSpr;
-					definedSprite.FlipH = true;
 					break;
 
 				//on release
