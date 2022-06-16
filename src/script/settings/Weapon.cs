@@ -61,9 +61,7 @@ namespace Butthole.Settings
 				swingAnim.Play("SwingDown");
 				swingIndex += 1;
 				canSwing = false;	
-				swingTimer.Start();
-				GD.Print("Swung Down");		
-				GD.Print(swingIndex);				
+				swingTimer.Start();				
 			}
 			else if(Input.IsActionJustPressed("Swing Weapon") && canSwing && swingIndex % 2 != 0)
 			{
@@ -71,10 +69,7 @@ namespace Butthole.Settings
 				swingAnim.Play("SwingUp");
 				swingIndex += 1;
 				swingTimer.Start();
-				canSwing = false;
-				GD.Print("Swung Up");		
-				GD.Print(swingIndex);	
-				
+				canSwing = false;				
 			}
 			if(swingIndex > 6)
 			{

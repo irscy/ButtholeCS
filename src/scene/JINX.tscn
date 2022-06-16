@@ -152,6 +152,7 @@ anims/SwingDown = SubResource( 9 )
 anims/SwingUp = SubResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stick"]
+visible = false
 position = Vector2( -25.4645, -24.9645 )
 rotation = -0.785397
 shape = SubResource( 11 )

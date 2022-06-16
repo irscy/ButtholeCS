@@ -9,31 +9,33 @@ namespace Butthole.Settings
 		Timer deathAnimWait;
 		bool canPlayDeathAnim = false;
 		bool isDead;
+		AudioStreamPlayer p;
+		public int numberSpawned;
 
 		//children
 		Sprite definedSprite;
 		CollisionShape2D hitbox;
 		AnimationPlayer deathAnim;
-
-		//parents
-		PathFollow2D path;
-		Path2D pathParent;
+		Area2D floppa;
+		Node2D path;
 
 		public override void _Ready()
 		{
-			//assignments to nodes
-			definedSprite = GetChild<Sprite>(0);
-			hitbox = GetChild<CollisionShape2D>(1);
-			deathAnim = GetChild<AnimationPlayer>(2);
-
-			path = GetParent<PathFollow2D>();
-			pathParent = path.GetParent<Path2D>();
+			//children
+			path = GetChild<Node2D>(0);
+			floppa = path.GetChild<Area2D>(0);
+			definedSprite = floppa.GetChild<Sprite>(0);
+			hitbox = floppa.GetChild<CollisionShape2D>(1);
+			deathAnim = floppa.GetChild<AnimationPlayer>(2);
+			p = floppa.GetChild<AudioStreamPlayer>(3);
 
 			//timer shit
 			deathAnimWait = new Timer();
-			deathAnimWait.WaitTime = 0.7f;
-			deathAnimWait.Connect("timeout", this, "OnTimeoutComplete");
+			deathAnimWait.WaitTime = 1.649f;
+			deathAnimWait.Connect("timeout", this, "OnDeathWaitComplete");
 			AddChild(deathAnimWait);
+
+			numberSpawned = 1;
 
 			deathAnim.Stop(true);
 
@@ -56,7 +58,7 @@ namespace Butthole.Settings
 			hitbox.Position = new Vector2(-6, -58);
 
 			path.Position = Vector2.Zero;
-			path.Offset = 0;
+			((PathFollow2D)path).Offset = 0;
 		}
 
 		private void OnFloppaEnemyEnter(object area)
@@ -65,15 +67,16 @@ namespace Butthole.Settings
 			{
 				deathAnim.Play("Death");
 				isDead = true;
+				p.Play();
+				numberSpawned -= 1;
+				GD.Print(numberSpawned);
 				deathAnimWait.Start();
 			}
 		}
 
-		void OnTimeoutComplete()
+		void OnDeathWaitComplete()
 		{
 			canPlayDeathAnim = true;
 		}
 	}
 }
-
-
