@@ -9,7 +9,7 @@ namespace Butthole.Settings
 		Node2D spriteChild;
 		Node2D weaponHolder;
 
-		Sprite weaponHolderSprite;
+		AnimatedSprite weaponHolderSprite;
 
 		AnimationPlayer swingAnim;
 
@@ -26,7 +26,7 @@ namespace Butthole.Settings
 			swingIndex = 1;
 			spriteChild = GetChild<Sprite>(0);
 			weaponHolder = GetParent<Node2D>();
-			weaponHolderSprite = weaponHolder.GetChild<Sprite>(0);
+			weaponHolderSprite = weaponHolder.GetChild<AnimatedSprite>(0);
 
 			//timer shit
 			swingTimer = new Timer();

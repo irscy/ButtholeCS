@@ -7,11 +7,7 @@ namespace Butthole.Settings
 	{
 
 		//objects
-		Sprite definedSprite;
-
-		[Export] Texture upSpr;
-		[Export] Texture downSpr;
-		[Export] Texture horizSpr;
+		AnimatedSprite definedSprite;
 
 		AnimationPlayer FlipAnim;
 
@@ -19,6 +15,11 @@ namespace Butthole.Settings
 		Vector2 ySpeed;
 
 		//fields
+
+		[Export] string horizSpr;
+		[Export] string upSpr;
+		[Export] string downSpr;
+
 		bool left;
 		bool right;
 		bool up;
@@ -31,7 +32,7 @@ namespace Butthole.Settings
 
 		public void SetObjectValues()
 		{
-			definedSprite = GetChild<Sprite>(0);
+			definedSprite = GetChild<AnimatedSprite>(0);
 			FlipAnim = definedSprite.GetChild<AnimationPlayer>(0);
 			canPlayHorizAnim = true;
 			canPlayUpAnim = true;
@@ -74,7 +75,8 @@ namespace Butthole.Settings
 						FlipAnim.Play("FlipDirSquish");
 					}
 					canPlayHorizAnim = false;
-					definedSprite.Texture = horizSpr;
+					definedSprite.Animation = horizSpr;
+					definedSprite.Playing = true;
 					break;
 
 				//on release
@@ -82,6 +84,7 @@ namespace Butthole.Settings
 					canPlayHorizAnim = true;
 					left = false;
 					horiz = false;
+					definedSprite.Playing = false;
 					break;
 
 				//RIGHT MOVEMENT
@@ -97,7 +100,8 @@ namespace Butthole.Settings
 						FlipAnim.Play("FlipDirSquish");
 					}
 					canPlayHorizAnim = false;
-					definedSprite.Texture = horizSpr;
+					definedSprite.Animation = horizSpr;
+					definedSprite.Playing = true;
 					break;
 
 				//on release
@@ -105,6 +109,7 @@ namespace Butthole.Settings
 					canPlayHorizAnim = true;
 					right = false;
 					horiz = false;
+					definedSprite.Playing = false;
 					break;
 
 				//UP MOVEMENT
@@ -119,7 +124,8 @@ namespace Butthole.Settings
 						FlipAnim.Play("FlipDirUp");
 					}
 					canPlayUpAnim = false;
-					definedSprite.Texture = upSpr;
+					definedSprite.Animation = upSpr;
+					definedSprite.Playing = true;
 					break;
 
 				//on release
@@ -127,6 +133,7 @@ namespace Butthole.Settings
 					canPlayUpAnim = true;
 					up = false;
 					vertic = false;
+					definedSprite.Playing = false;
 					break;
 
 				//DOWN MOVEMENT
@@ -141,7 +148,8 @@ namespace Butthole.Settings
 						FlipAnim.Play("FlipDirDown");
 					}
 					canPlayDownAnim = false;
-					definedSprite.Texture = downSpr;
+					definedSprite.Animation = downSpr;
+					definedSprite.Playing = true;
 					break;
 
 				//on release
@@ -149,6 +157,7 @@ namespace Butthole.Settings
 					canPlayDownAnim = true;
 					down = false;
 					vertic = false;
+					definedSprite.Playing = false;
 					break;
 			}
 		}
