@@ -8,8 +8,8 @@
 script = ExtResource( 2 )
 
 [node name="FloppaNPC" parent="." groups=["Enemy"] instance=ExtResource( 3 )]
-position = Vector2( 519, 329 )
+position = Vector2( 500, 400 )
 
 [node name="JINX" parent="." instance=ExtResource( 1 )]
-position = Vector2( 76, 383 )
+position = Vector2( 100, 400 )
 idleSpr = "jinxIDLE"

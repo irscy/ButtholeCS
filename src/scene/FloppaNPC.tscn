@@ -23,7 +23,6 @@ cubic_interp = false
 loop = false
 
 [node name="FloppaNPC" type="Area2D" parent="PathFollow2D" groups=["Enemy"]]
-position = Vector2( -42.3203, -18.6911 )
 scale = Vector2( 1, 1 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -33,9 +32,11 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="PathFollow2D/FloppaNPC"]
 scale = Vector2( 0.35, 0.5 )
 texture = ExtResource( 1 )
+centered = false
+offset = Vector2( -112, -230 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/FloppaNPC" groups=["Enemy"]]
-position = Vector2( -9, 0 )
+position = Vector2( -6, -58 )
 shape = SubResource( 1 )
 
 [node name="DeathAnim" type="AnimationPlayer" parent="PathFollow2D/FloppaNPC"]
