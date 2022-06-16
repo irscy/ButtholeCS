@@ -7,4 +7,3 @@
 script = ExtResource( 2 )
 
 [node name="JINX" parent="." instance=ExtResource( 1 )]
-position = Vector2( 500, 360 )

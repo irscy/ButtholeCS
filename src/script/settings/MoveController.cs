@@ -43,6 +43,8 @@ namespace Butthole.Settings
 		public override void _Ready()
 		{
 			SetObjectValues();
+			Position = GetViewportRect().Size * 0.5f;
+			SetIndexed("position:y", GetViewportRect().Size.y * 0.5f + 75);
 		}
 
 		public override void _PhysicsProcess(float delta)
@@ -50,7 +52,7 @@ namespace Butthole.Settings
 			EnableMoveControls(delta);
 		}
 
-		void ResetAllAnims()
+		void ResetAnims()
 		{
 			FlipAnim.Stop(true);
 		}
@@ -68,7 +70,7 @@ namespace Butthole.Settings
 					horiz = true;
 					if (canPlayHorizAnim)
 					{
-						ResetAllAnims();
+						ResetAnims();
 						FlipAnim.Play("FlipDirSquish");
 					}
 					canPlayHorizAnim = false;
@@ -91,7 +93,7 @@ namespace Butthole.Settings
 					horiz = true;
 					if (canPlayHorizAnim)
 					{
-						ResetAllAnims();
+						ResetAnims();
 						FlipAnim.Play("FlipDirSquish");
 					}
 					canPlayHorizAnim = false;
@@ -113,7 +115,7 @@ namespace Butthole.Settings
 					vertic = true;
 					if (canPlayUpAnim)
 					{
-						ResetAllAnims();
+						ResetAnims();
 						FlipAnim.Play("FlipDirUp");
 					}
 					canPlayUpAnim = false;
@@ -135,7 +137,7 @@ namespace Butthole.Settings
 					vertic = true;
 					if (canPlayDownAnim)
 					{
-						ResetAllAnims();
+						ResetAnims();
 						FlipAnim.Play("FlipDirDown");
 					}
 					canPlayDownAnim = false;
