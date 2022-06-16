@@ -46,7 +46,6 @@ namespace Butthole.Settings
 		public override void _Ready()
 		{
 			SetObjectValues();
-			Position = GetViewportRect().Size * 0.5f;
 			SetIndexed("position:y", GetViewportRect().Size.y * 0.5f + 75);
 		}
 
@@ -169,3 +168,6 @@ namespace Butthole.Settings
 		}
 	}
 }
+
+
+
