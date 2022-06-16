@@ -23,6 +23,7 @@ cubic_interp = false
 loop = false
 
 [node name="FloppaNPC" type="Area2D" parent="PathFollow2D" groups=["Enemy"]]
+position = Vector2( -42.3203, -18.6911 )
 scale = Vector2( 1, 1 )
 script = ExtResource( 2 )
 __meta__ = {

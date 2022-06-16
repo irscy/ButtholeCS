@@ -5,6 +5,11 @@ namespace Butthole.Settings
 {
 	class Enemy : Node2D
 	{
+		//fields
+		Timer deathAnimWait;
+		bool canPlayDeathAnim = false;
+		bool isDead;
+
 		//children
 		Sprite definedSprite;
 		CollisionShape2D hitbox;
@@ -16,6 +21,7 @@ namespace Butthole.Settings
 
 		public override void _Ready()
 		{
+			//assignments to nodes
 			definedSprite = GetChild<Sprite>(0);
 			hitbox = GetChild<CollisionShape2D>(1);
 			deathAnim = GetChild<AnimationPlayer>(2);
@@ -23,7 +29,21 @@ namespace Butthole.Settings
 			path = GetParent<PathFollow2D>();
 			pathParent = path.GetParent<Path2D>();
 
+			//timer shit
+			deathAnimWait = new Timer();
+			deathAnimWait.WaitTime = 1;
+			deathAnimWait.Connect("timeout", this, "OnTimeoutComplete");
+			AddChild(deathAnimWait);
+
 			FixTransform();
+		}
+
+		public override void _PhysicsProcess(float delta)
+		{
+			if(canPlayDeathAnim && isDead)
+			{
+				Free();
+			}
 		}
 
 		void FixTransform()
@@ -39,10 +59,17 @@ namespace Butthole.Settings
 
 		private void OnFloppaEnemyEnter(object area)
 		{
-			if(((Node2D)area).IsInGroup("Weapon"))
+			if(((Node2D)area).IsInGroup("Weapon") && !canPlayDeathAnim)
 			{
 				deathAnim.Play("Death");
+				isDead = true;
+				deathAnimWait.Start();
 			}
+		}
+
+		void OnTimeoutComplete()
+		{
+			canPlayDeathAnim = true;
 		}
 	}
 }
