@@ -19,6 +19,7 @@ namespace Butthole.Settings
 		[Export] string horizSpr;
 		[Export] string upSpr;
 		[Export] string downSpr;
+		[Export] string idleSpr;
 
 		bool left;
 		bool right;
@@ -33,6 +34,7 @@ namespace Butthole.Settings
 		public void SetObjectValues()
 		{
 			definedSprite = GetChild<AnimatedSprite>(0);
+			definedSprite.Animation = idleSpr;
 			FlipAnim = definedSprite.GetChild<AnimationPlayer>(0);
 			canPlayHorizAnim = true;
 			canPlayUpAnim = true;
@@ -84,6 +86,7 @@ namespace Butthole.Settings
 					canPlayHorizAnim = true;
 					left = false;
 					horiz = false;
+					definedSprite.Animation = idleSpr;
 					definedSprite.Playing = false;
 					break;
 
@@ -109,6 +112,7 @@ namespace Butthole.Settings
 					canPlayHorizAnim = true;
 					right = false;
 					horiz = false;
+					definedSprite.Animation = idleSpr;
 					definedSprite.Playing = false;
 					break;
 
@@ -133,6 +137,7 @@ namespace Butthole.Settings
 					canPlayUpAnim = true;
 					up = false;
 					vertic = false;
+					definedSprite.Animation = idleSpr;
 					definedSprite.Playing = false;
 					break;
 
@@ -157,6 +162,7 @@ namespace Butthole.Settings
 					canPlayDownAnim = true;
 					down = false;
 					vertic = false;
+					definedSprite.Animation = idleSpr;
 					definedSprite.Playing = false;
 					break;
 			}
