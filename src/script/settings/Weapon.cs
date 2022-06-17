@@ -15,6 +15,8 @@ namespace Butthole.Settings
 
 		Timer swingTimer;
 
+		CollisionShape2D hitbox;
+
 		float swingDelay = 0.4f;
 		int swingIndex;
 		bool canSwing = true;
@@ -27,6 +29,7 @@ namespace Butthole.Settings
 			spriteChild = GetChild<Sprite>(0);
 			weaponHolder = GetParent<Node2D>();
 			weaponHolderSprite = weaponHolder.GetChild<AnimatedSprite>(0);
+			hitbox = GetChild<CollisionShape2D>(2);
 
 			//timer shit
 			swingTimer = new Timer();
@@ -44,6 +47,15 @@ namespace Butthole.Settings
 		{
 			//calling methods with float delta
 			RunSwing(delta);
+
+			if(swingAnim.IsPlaying())
+			{
+				hitbox.Disabled = false;
+			}
+			else
+			{
+				hitbox.Disabled = true;
+			}
 		}
 
 		//on timer timeout complete

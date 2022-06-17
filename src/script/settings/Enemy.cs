@@ -8,7 +8,7 @@ namespace Butthole.Settings
 		//fields
 		Timer deathAnimWait;
 		bool canPlayDeathAnim = false;
-		public bool isDead;
+		bool isDead;
 		AudioStreamPlayer p;
 
 		//children
@@ -33,7 +33,7 @@ namespace Butthole.Settings
 			deathAnimWait.WaitTime = 1.649f;
 			deathAnimWait.Connect("timeout", this, "OnDeathWaitComplete");
 			AddChild(deathAnimWait);
-			
+
 			deathAnim.Stop(true);
 
 			FixTransform();
@@ -41,10 +41,11 @@ namespace Butthole.Settings
 
 		public override void _PhysicsProcess(float delta)
 		{
-			if(canPlayDeathAnim && isDead)
+			if (canPlayDeathAnim && isDead)
 			{
 				Free();
 			}
+			
 		}
 
 		public void FixTransform()
@@ -61,7 +62,9 @@ namespace Butthole.Settings
 
 		private void OnFloppaEnemyEnter(object area)
 		{
-			if(((Node2D)area).IsInGroup("Weapon") && !canPlayDeathAnim)
+			var weaponAnim = ((Node2D)area).GetChild<AnimationPlayer>(1);
+			
+			if (((Node2D)area).IsInGroup("Weapon") && !canPlayDeathAnim)
 			{
 				deathAnim.Play("Death");
 				isDead = true;
