@@ -1,13 +1,16 @@
 using Butthole.Settings;
 using Godot;
+using System;
 
 namespace Butthole.Settings
 {
 	class EnemyReset : Node2D
 	{
+        Random rand = new Random();
 		PackedScene floppa;
 		Node2D scene;
 		Enemy e;
+        int randY;
 
 		public override void _Ready()
 		{
@@ -18,17 +21,22 @@ namespace Butthole.Settings
 
 		public override void _PhysicsProcess(float delta)
 		{
-			if(Input.IsActionJustPressed("Reset Enemies") && e.numberSpawned < 1)
+			if(Input.IsActionJustPressed("Reset Enemies"))
 			{
-				var ins = floppa.Instance();
-				scene.AddChild(ins);
-				((Node2D)ins).Position = new Vector2(500, 400);
-				e.numberSpawned += 1;
-				GD.Print(e.numberSpawned);
+				if(e.numberSpawned == 0)
+				{
+					randY = rand.Next(100, 525);
+					var ins = floppa.Instance();
+					scene.AddChild(ins);
+					((Enemy)ins).FixTransform();
+					((Node2D)ins).Position = new Vector2(500, 400);
+					e.numberSpawned += 1;
+				}
 			}
-			if(Input.IsActionJustPressed("Reset Enemies") && e.numberSpawned < 0)
+
+			if(Input.IsActionJustPressed("DEBUG"))
 			{
-				GD.Print("An enemy is currently alive, kill that first");
+				GD.Print(e.numberSpawned);
 			}
 		}
 	}

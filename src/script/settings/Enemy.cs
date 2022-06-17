@@ -50,7 +50,7 @@ namespace Butthole.Settings
 			}
 		}
 
-		void FixTransform()
+		public void FixTransform()
 		{
 			definedSprite.Offset = new Vector2(-112, -230);
 			definedSprite.Centered = false;
@@ -69,7 +69,6 @@ namespace Butthole.Settings
 				isDead = true;
 				p.Play();
 				numberSpawned -= 1;
-				GD.Print(numberSpawned);
 				deathAnimWait.Start();
 			}
 		}
