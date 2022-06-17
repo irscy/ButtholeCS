@@ -54,6 +54,7 @@ namespace Butthole.Settings
 		{
 			definedSprite.Offset = new Vector2(-112, -230);
 			definedSprite.Centered = false;
+			definedSprite.Texture = ResourceLoader.Load<Texture>("res://src/sprite/static/floppaNPC/npc_floppa.png");
 			Position = new Vector2(400, 400);
 
 			hitbox.Position = new Vector2(-6, -58);
