@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/jinxSPRITE.png-7abced5c4f78b251723189edad9abb4f.stex"
+path="res://.import/jinxSPRITE.png-b46598bf62adbe33da9f84aa52a29913.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/sprite/jinxSPRITE.png"
-dest_files=[ "res://.import/jinxSPRITE.png-7abced5c4f78b251723189edad9abb4f.stex" ]
+source_file="res://src/sprite/static/jinx/jinxSPRITE.png"
+dest_files=[ "res://.import/jinxSPRITE.png-b46598bf62adbe33da9f84aa52a29913.stex" ]
 
 [params]
 

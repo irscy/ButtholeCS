@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/npc_floppa.png-fe2953aeb66efac35933adf60b000580.stex"
+path="res://.import/jinxSPRITE_DOWN.png-cb4444719bffffea3f3f3a69dfa48252.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/sprite/npc_floppa.png"
-dest_files=[ "res://.import/npc_floppa.png-fe2953aeb66efac35933adf60b000580.stex" ]
+source_file="res://src/sprite/static/jinx/jinxSPRITE_DOWN.png"
+dest_files=[ "res://.import/jinxSPRITE_DOWN.png-cb4444719bffffea3f3f3a69dfa48252.stex" ]
 
 [params]
 
