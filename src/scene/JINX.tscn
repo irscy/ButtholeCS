@@ -134,7 +134,7 @@ frames = SubResource( 2 )
 animation = "jinxWALK_up"
 speed_scale = 0.7
 centered = false
-offset = Vector2( -130.138, -383.38 )
+offset = Vector2( -130, -383 )
 
 [node name="FlipAnim" parent="JinxSprite" instance=ExtResource( 3 )]
 
