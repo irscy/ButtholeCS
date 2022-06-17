@@ -30,7 +30,7 @@ namespace Butthole.Settings
 
 			//timer shit
 			deathAnimWait = new Timer();
-			deathAnimWait.WaitTime = 1.649f;
+			deathAnimWait.WaitTime = 1.8f;
 			deathAnimWait.Connect("timeout", this, "OnDeathWaitComplete");
 			AddChild(deathAnimWait);
 
