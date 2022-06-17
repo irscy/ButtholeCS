@@ -13,7 +13,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 21.6732, 29 )
 
-[node name="Path2D" type="Path2D"]
+[node name="FloppaNPC" type="Path2D"]
 scale = Vector2( 1.5, 1.5 )
 curve = SubResource( 3 )
 script = ExtResource( 2 )
@@ -25,7 +25,6 @@ cubic_interp = false
 loop = false
 
 [node name="FloppaNPC" type="Area2D" parent="PathFollow2D" groups=["Enemy"]]
-scale = Vector2( 1, 1 )
 __meta__ = {
 "_edit_vertical_guides_": [ -5.0 ]
 }

@@ -8,9 +8,8 @@ namespace Butthole.Settings
 		//fields
 		Timer deathAnimWait;
 		bool canPlayDeathAnim = false;
-		bool isDead;
+		public bool isDead;
 		AudioStreamPlayer p;
-		public int numberSpawned;
 
 		//children
 		Sprite definedSprite;
@@ -34,9 +33,7 @@ namespace Butthole.Settings
 			deathAnimWait.WaitTime = 1.649f;
 			deathAnimWait.Connect("timeout", this, "OnDeathWaitComplete");
 			AddChild(deathAnimWait);
-
-			numberSpawned = 1;
-
+			
 			deathAnim.Stop(true);
 
 			FixTransform();
@@ -54,6 +51,7 @@ namespace Butthole.Settings
 		{
 			definedSprite.Offset = new Vector2(-112, -230);
 			definedSprite.Centered = false;
+			Position = new Vector2(500, 400);
 
 			hitbox.Position = new Vector2(-6, -58);
 
@@ -68,7 +66,6 @@ namespace Butthole.Settings
 				deathAnim.Play("Death");
 				isDead = true;
 				p.Play();
-				numberSpawned -= 1;
 				deathAnimWait.Start();
 			}
 		}
