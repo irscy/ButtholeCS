@@ -15,18 +15,18 @@ namespace Butthole.Settings
 		Sprite definedSprite;
 		CollisionShape2D hitbox;
 		AnimationPlayer deathAnim;
-		Area2D floppa;
+		Area2D coreNPC;
 		Node2D path;
 
 		public override void _Ready()
 		{
 			//children
 			path = GetChild<Node2D>(0);
-			floppa = path.GetChild<Area2D>(0);
-			definedSprite = floppa.GetChild<Sprite>(0);
-			hitbox = floppa.GetChild<CollisionShape2D>(1);
-			deathAnim = floppa.GetChild<AnimationPlayer>(2);
-			p = floppa.GetChild<AudioStreamPlayer>(3);
+			coreNPC = path.GetChild<Area2D>(0);
+			definedSprite = coreNPC.GetChild<Sprite>(0);
+			hitbox = coreNPC.GetChild<CollisionShape2D>(1);
+			deathAnim = coreNPC.GetChild<AnimationPlayer>(2);
+			p = coreNPC.GetChild<AudioStreamPlayer>(3);
 
 			//timer shit
 			deathAnimWait = new Timer();
@@ -55,9 +55,12 @@ namespace Butthole.Settings
 			definedSprite.Offset = new Vector2(-112, -230);
 			definedSprite.Centered = false;
 			definedSprite.Texture = ResourceLoader.Load<Texture>("res://src/sprite/static/floppaNPC/npc_floppa.png");
+
 			Position = new Vector2(400, 400);
 
 			hitbox.Position = new Vector2(-6, -58);
+
+			coreNPC.RotationDegrees = 0;
 
 			path.Position = Vector2.Zero;
 			((PathFollow2D)path).Offset = 0;
