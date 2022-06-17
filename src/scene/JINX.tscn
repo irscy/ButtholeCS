@@ -139,6 +139,8 @@ offset = Vector2( -130.138, -383.38 )
 [node name="FlipAnim" parent="JinxSprite" instance=ExtResource( 3 )]
 
 [node name="Stick" type="Area2D" parent="." groups=["Weapon"]]
+position = Vector2( -53, -90 )
+rotation = 1.18159
 script = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="Stick"]

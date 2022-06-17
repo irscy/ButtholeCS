@@ -36,23 +36,25 @@ namespace Butthole.Settings
 
 			deathAnim.Stop(true);
 
+			//fix transform of first spawn
 			FixTransform();
 		}
 
 		public override void _PhysicsProcess(float delta)
 		{
+			//after death cycle is completed, destroy the enemy
 			if (canPlayDeathAnim && isDead)
 			{
 				Free();
-			}
-			
+			}	
 		}
 
+		//change node values on spawn to make sure they spawn in the right place
 		public void FixTransform()
 		{
 			definedSprite.Offset = new Vector2(-112, -230);
 			definedSprite.Centered = false;
-			Position = new Vector2(500, 400);
+			Position = new Vector2(400, 400);
 
 			hitbox.Position = new Vector2(-6, -58);
 
@@ -60,6 +62,7 @@ namespace Butthole.Settings
 			((PathFollow2D)path).Offset = 0;
 		}
 
+		//when a weapon hits the enemy, play the death cycle
 		private void OnFloppaEnemyEnter(object area)
 		{
 			var weaponAnim = ((Node2D)area).GetChild<AnimationPlayer>(1);
@@ -68,11 +71,11 @@ namespace Butthole.Settings
 			{
 				deathAnim.Play("Death");
 				isDead = true;
-				p.Play();
 				deathAnimWait.Start();
 			}
 		}
 
+		//after timer is complete, set canPlayDeathAnim back to true
 		void OnDeathWaitComplete()
 		{
 			canPlayDeathAnim = true;
