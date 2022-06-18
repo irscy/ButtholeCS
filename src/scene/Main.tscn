@@ -19,7 +19,6 @@ script = ExtResource( 4 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 100, 400 )
-current = true
 process_mode = 0
 drag_margin_v_enabled = true
 smoothing_enabled = true
@@ -29,6 +28,7 @@ script = ExtResource( 2 )
 targetPath = "/root/Main/JINX"
 
 [node name="UI" type="Control" parent="Camera2D"]
+visible = false
 margin_left = -100.0
 margin_top = -400.0
 margin_right = -60.0
