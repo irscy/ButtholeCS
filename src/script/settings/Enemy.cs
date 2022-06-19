@@ -20,21 +20,10 @@ namespace Butthole.Settings
 
 		public override void _Ready()
 		{
-			//children
-			path = GetChild<Node2D>(0);
-			coreNPC = path.GetChild<Area2D>(0);
-			definedSprite = coreNPC.GetChild<Sprite>(0);
-			hitbox = coreNPC.GetChild<CollisionShape2D>(1);
-			deathAnim = coreNPC.GetChild<AnimationPlayer>(2);
-			p = coreNPC.GetChild<AudioStreamPlayer>(3);
-
-			//timer shit
-			deathAnimWait = new Timer();
-			deathAnimWait.WaitTime = 1.8f;
-			deathAnimWait.Connect("timeout", this, "OnDeathWaitComplete");
-			AddChild(deathAnimWait);
-
 			deathAnim.Stop(true);
+
+			//set values of fields lol
+			SetObjectValues();
 
 			//fix transform of first spawn
 			FixTransform();
@@ -83,6 +72,23 @@ namespace Butthole.Settings
 		void OnDeathWaitComplete()
 		{
 			canPlayDeathAnim = true;
+		}
+
+		void SetObjectValues()
+		{
+			//children
+			path = GetChild<Node2D>(0);
+			coreNPC = path.GetChild<Area2D>(0);
+			definedSprite = coreNPC.GetChild<Sprite>(0);
+			hitbox = coreNPC.GetChild<CollisionShape2D>(1);
+			deathAnim = coreNPC.GetChild<AnimationPlayer>(2);
+			p = coreNPC.GetChild<AudioStreamPlayer>(3);
+
+			//timer shit
+			deathAnimWait = new Timer();
+			deathAnimWait.WaitTime = 1.8f;
+			deathAnimWait.Connect("timeout", this, "OnDeathWaitComplete");
+			AddChild(deathAnimWait);
 		}
 	}
 }
