@@ -14,12 +14,14 @@ namespace Butthole.Settings
 		AnimationPlayer swingAnim;
 
 		Timer swingTimer;
+		Timer animBoxEnable;
 
 		CollisionShape2D hitbox;
 
 		float swingDelay = 0.4f;
 		int swingIndex;
 		bool canSwing = true;
+		bool hitboxEnabled = false;
 
 		public override void _Ready()
 		{
@@ -35,8 +37,14 @@ namespace Butthole.Settings
 			swingTimer = new Timer();
 			swingTimer.OneShot = true;
 			swingTimer.WaitTime = swingDelay;
-			swingTimer.Connect("timeout", this, "OnTimeoutComplete");
+			swingTimer.Connect("timeout", this, "OnSwingTimeoutComplete");
 			AddChild(swingTimer);
+
+			animBoxEnable = new Timer();
+			animBoxEnable.OneShot = true;
+			animBoxEnable.WaitTime = swingTimer.WaitTime; //big brain move btw
+			animBoxEnable.Connect("timeout", this, "OnHitboxEnableComplete");
+			AddChild(animBoxEnable);
 
 			//default position
 			Position = new Vector2(-24, -40);
@@ -56,32 +64,50 @@ namespace Butthole.Settings
 			{
 				hitbox.Disabled = true;
 			}
+
+			if(hitboxEnabled)
+			{
+				hitbox.Disabled = false;
+			}
+			else
+			{
+				hitbox.Disabled = true;
+			}
 		}
 
 		//on timer timeout complete
-		void OnTimeoutComplete()
+		void OnSwingTimeoutComplete()
 		{
 			canSwing = true;
+		}
+
+		void OnHitboxEnableComplete()
+		{
+			hitboxEnabled = false;
 		}
 
 		//used to see if swing index is even or odd, then swing in the appropriate direction
 		void RunSwing(float delta)
 		{			
-			if(Input.IsActionJustPressed("Swing Weapon") && canSwing && swingIndex % 2 == 0)
+			if(Input.IsActionJustPressed("Swing Weapon") && canSwing && !hitboxEnabled && swingIndex % 2 == 0)
 			{
 				swingAnim.Stop(true);
 				swingAnim.Play("SwingDown");
 				swingIndex += 1;
 				canSwing = false;	
+				hitboxEnabled = true;
+				animBoxEnable.Start();
 				swingTimer.Start();				
 			}
-			else if(Input.IsActionJustPressed("Swing Weapon") && canSwing && swingIndex % 2 != 0)
+			else if(Input.IsActionJustPressed("Swing Weapon") && canSwing && !hitboxEnabled && swingIndex % 2 != 0)
 			{
 				swingAnim.Stop(true);
 				swingAnim.Play("SwingUp");
 				swingIndex += 1;
+				canSwing = false;	
+				hitboxEnabled = true;
 				swingTimer.Start();
-				canSwing = false;				
+				animBoxEnable.Start();
 			}
 			if(swingIndex > 6)
 			{

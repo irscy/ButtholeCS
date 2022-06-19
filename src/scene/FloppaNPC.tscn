@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://src/sprite/static/floppaNPC/npc_floppa_lay.png" type="Texture" id=1]
+[ext_resource path="res://src/sprite/static/floppaNPC/npc_floppa_fly.png" type="Texture" id=1]
 [ext_resource path="res://src/script/settings/Enemy.cs" type="Script" id=2]
 [ext_resource path="res://src/fx/anim/DeathAnim.tres" type="Animation" id=3]
 [ext_resource path="res://src/audio/death.mp3" type="AudioStream" id=4]
@@ -19,20 +19,17 @@ curve = SubResource( 3 )
 script = ExtResource( 2 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2( 301.333, -19.3333 )
-offset = 412.929
+position = Vector2( -2.34641, 0.0243887 )
 rotate = false
 cubic_interp = false
 loop = false
 
 [node name="FloppaNPC" type="Area2D" parent="PathFollow2D" groups=["Enemy"]]
-rotation = 1.5708
 __meta__ = {
 "_edit_vertical_guides_": [ -5.0 ]
 }
 
 [node name="Sprite" type="Sprite" parent="PathFollow2D/FloppaNPC"]
-modulate = Color( 1, 1, 1, 0 )
 scale = Vector2( 0.35, 0.5 )
 texture = ExtResource( 1 )
 
