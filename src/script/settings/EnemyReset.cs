@@ -17,14 +17,14 @@ namespace Butthole.Settings
 		{
 			//set object values
 			Scene = GetParent<Node2D>();
-			FloppaCollection = Scene.GetChild<Node2D>(0);
-			Floppa = GD.Load<PackedScene>("res://src/Scene/floppaNPC.tscn");
+			FloppaCollection = Scene.GetChild<Node2D>(1);
+			Floppa = GD.Load<PackedScene>("res://src/Scene/FloppaNPC.tscn");
 
 			//instance the first spawn
 			var firstSpawn = Floppa.Instance();
 			FloppaCollection.AddChild(firstSpawn);
 
-			e = GetNode<Enemy>("/root/Main/FloppaCollection/floppaNPC");
+			e = GetNode<Enemy>("/root/Main/FloppaCollection/FloppaNPC");
 			e.FixTransform();
 		}
 

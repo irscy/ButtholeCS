@@ -8,11 +8,14 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="FloppaCollection" type="Node2D" parent="."]
-
 [node name="JINX" parent="." instance=ExtResource( 1 )]
 position = Vector2( 100, 400 )
-idleSpr = "jinxIDLE"
+HorizSpr = "jinxWALK_horiz"
+UpSpr = "jinxWALK_up"
+DownSpr = "jinxWALK_down"
+IdleSpr = "jinxIDLE"
+
+[node name="FloppaCollection" type="Node2D" parent="."]
 
 [node name="EnemyReset" type="Node2D" parent="."]
 script = ExtResource( 4 )
@@ -25,7 +28,7 @@ smoothing_enabled = true
 offset_v = -1.0
 editor_draw_drag_margin = true
 script = ExtResource( 2 )
-targetPath = "/root/Main/JINX"
+TargetPath = "/root/Main/JINX"
 
 [node name="UI" type="Control" parent="Camera2D"]
 visible = false

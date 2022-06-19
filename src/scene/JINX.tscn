@@ -10,16 +10,6 @@
 [ext_resource path="res://src/sprite/spriteSHEETS/jinxWALK_down.png" type="Texture" id=10]
 [ext_resource path="res://src/sprite/spriteSHEETS/jinxWALK_up.png" type="Texture" id=11]
 
-[sub_resource type="AtlasTexture" id=5]
-flags = 4
-atlas = ExtResource( 10 )
-region = Rect2( 0, 0, 290, 384 )
-
-[sub_resource type="AtlasTexture" id=6]
-flags = 4
-atlas = ExtResource( 10 )
-region = Rect2( 290, 0, 290, 384 )
-
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 9 )
@@ -28,6 +18,16 @@ region = Rect2( 0, 0, 290, 384 )
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 9 )
+region = Rect2( 290, 0, 290, 384 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 290, 384 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 10 )
 region = Rect2( 290, 0, 290, 384 )
 
 [sub_resource type="AtlasTexture" id=7]
@@ -47,14 +47,14 @@ animations = [ {
 "name": "jinxIDLE",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 5 ), SubResource( 6 ) ],
-"loop": true,
-"name": "jinxWALK_down",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "jinxWALK_horiz",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "jinxWALK_down",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 7 ), SubResource( 8 ) ],
@@ -124,9 +124,6 @@ extents = Vector2( 4.59619, 45.6586 )
 
 [node name="JINX" type="Node2D"]
 script = ExtResource( 2 )
-horizSpr = "jinxWALK_horiz"
-upSpr = "jinxWALK_up"
-downSpr = "jinxWALK_down"
 
 [node name="JinxSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.6, 0.35 )
