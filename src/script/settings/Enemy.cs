@@ -20,10 +20,9 @@ namespace Butthole.Settings
 
 		public override void _Ready()
 		{
-			deathAnim.Stop(true);
-
 			//set values of fields lol
 			SetObjectValues();
+			deathAnim.Stop(true);
 
 			//fix transform of first spawn
 			FixTransform();
