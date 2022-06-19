@@ -7,40 +7,39 @@ namespace Butthole.Settings
 	{
 
 		//objects
-		AnimatedSprite definedSprite;
+		AnimatedSprite DefinedSprite;
 
 		AnimationPlayer FlipAnim;
 
-		Vector2 xSpeed;
-		Vector2 ySpeed;
+		Vector2 XSpeed;
+		Vector2 YSpeed;
 
 		//fields
+		[Export] string HorizSpr;
+		[Export] string UpSpr;
+		[Export] string DownSpr;
+		[Export] string IdleSpr;
 
-		[Export] string horizSpr;
-		[Export] string upSpr;
-		[Export] string downSpr;
-		[Export] string idleSpr;
-
-		bool left;
-		bool right;
-		bool up;
-		bool down;
-		bool horiz;
-		bool vertic;
-		bool canPlayHorizAnim;
-		bool canPlayUpAnim;
-		bool canPlayDownAnim;
+		bool Left;
+		bool Right;
+		bool Up;
+		bool Down;
+		bool Horiz;
+		bool Vertic;
+		bool CanPlayHorizAnim;
+		bool CanPlayUpAnim;
+		bool CanPlayDownAnim;
 
 		public void SetObjectValues()
 		{
-			definedSprite = GetChild<AnimatedSprite>(0);
-			definedSprite.Animation = idleSpr;
-			FlipAnim = definedSprite.GetChild<AnimationPlayer>(0);
-			canPlayHorizAnim = true;
-			canPlayUpAnim = true;
-			canPlayDownAnim = true;
-			xSpeed = new Vector2(200, 0);
-			ySpeed = new Vector2(0, 200);
+			DefinedSprite = GetChild<AnimatedSprite>(0);
+			DefinedSprite.Animation = IdleSpr;
+			FlipAnim = DefinedSprite.GetChild<AnimationPlayer>(0);
+			CanPlayHorizAnim = true;
+			CanPlayUpAnim = true;
+			CanPlayDownAnim = true;
+			XSpeed = new Vector2(200, 0);
+			YSpeed = new Vector2(0, 200);
 		}
 
 		public override void _Ready()
@@ -65,104 +64,104 @@ namespace Butthole.Settings
 			{
 				//LEFT MOVEMENT
 				//on press
-				case { } when Input.IsActionPressed("Move Left") && !right && !vertic:
-					GlobalPosition -= xSpeed * delta;
+				case { } when Input.IsActionPressed("Move Left") && !Right && !Vertic:
+					GlobalPosition -= XSpeed * delta;
 					Scale = new Vector2(1, 1);
-					left = true;
-					horiz = true;
-					if (canPlayHorizAnim)
+					Left = true;
+					Horiz = true;
+					if (CanPlayHorizAnim)
 					{
 						ResetAnims();
 						FlipAnim.Play("FlipDirSquish");
 					}
-					canPlayHorizAnim = false;
-					definedSprite.Animation = horizSpr;
-					definedSprite.Playing = true;
+					CanPlayHorizAnim = false;
+					DefinedSprite.Animation = HorizSpr;
+					DefinedSprite.Playing = true;
 					break;
 
 				//on release
 				case { } when Input.IsActionJustReleased("Move Left"):					
-					canPlayHorizAnim = true;
-					left = false;
-					horiz = false;
-					definedSprite.Animation = idleSpr;
-					definedSprite.Playing = false;
+					CanPlayHorizAnim = true;
+					Left = false;
+					Horiz = false;
+					DefinedSprite.Animation = IdleSpr;
+					DefinedSprite.Playing = false;
 					break;
 
 				//RIGHT MOVEMENT
 				//on press
-				case { } when Input.IsActionPressed("Move Right") && !left && !vertic:
-					GlobalPosition += xSpeed * delta;
+				case { } when Input.IsActionPressed("Move Right") && !Left && !Vertic:
+					GlobalPosition += XSpeed * delta;
 					Scale = new Vector2(-1, 1);
-					right = true;
-					horiz = true;
-					if (canPlayHorizAnim)
+					Right = true;
+					Horiz = true;
+					if (CanPlayHorizAnim)
 					{
 						ResetAnims();
 						FlipAnim.Play("FlipDirSquish");
 					}
-					canPlayHorizAnim = false;
-					definedSprite.Animation = horizSpr;
-					definedSprite.Playing = true;
+					CanPlayHorizAnim = false;
+					DefinedSprite.Animation = HorizSpr;
+					DefinedSprite.Playing = true;
 					break;
 
 				//on release
 				case { } when Input.IsActionJustReleased("Move Right"):	
-					canPlayHorizAnim = true;
-					right = false;
-					horiz = false;
-					definedSprite.Animation = idleSpr;
-					definedSprite.Playing = false;
+					CanPlayHorizAnim = true;
+					Right = false;
+					Horiz = false;
+					DefinedSprite.Animation = IdleSpr;
+					DefinedSprite.Playing = false;
 					break;
 
-				//UP MOVEMENT
+				//Up MOVEMENT
 				//on press
-				case { } when Input.IsActionPressed("Move Up") && !down:
-					GlobalPosition -= ySpeed * delta;
-					up = true;
-					vertic = true;
-					if (canPlayUpAnim)
+				case { } when Input.IsActionPressed("Move Up") && !Down:
+					GlobalPosition -= YSpeed * delta;
+					Up = true;
+					Vertic = true;
+					if (CanPlayUpAnim)
 					{
 						ResetAnims();
 						FlipAnim.Play("FlipDirUp");
 					}
-					canPlayUpAnim = false;
-					definedSprite.Animation = upSpr;
-					definedSprite.Playing = true;
+					CanPlayUpAnim = false;
+					DefinedSprite.Animation = UpSpr;
+					DefinedSprite.Playing = true;
 					break;
 
 				//on release
 				case { } when Input.IsActionJustReleased("Move Up"):	
-					canPlayUpAnim = true;
-					up = false;
-					vertic = false;
-					definedSprite.Animation = idleSpr;
-					definedSprite.Playing = false;
+					CanPlayUpAnim = true;
+					Up = false;
+					Vertic = false;
+					DefinedSprite.Animation = IdleSpr;
+					DefinedSprite.Playing = false;
 					break;
 
-				//DOWN MOVEMENT
+				//Down MOVEMENT
 				//on press
-				case { } when Input.IsActionPressed("Move Down") && !up:
-					GlobalPosition += ySpeed * delta;
-					down = true;
-					vertic = true;
-					if (canPlayDownAnim)
+				case { } when Input.IsActionPressed("Move Down") && !Up:
+					GlobalPosition += YSpeed * delta;
+					Down = true;
+					Vertic = true;
+					if (CanPlayDownAnim)
 					{
 						ResetAnims();
 						FlipAnim.Play("FlipDirDown");
 					}
-					canPlayDownAnim = false;
-					definedSprite.Animation = downSpr;
-					definedSprite.Playing = true;
+					CanPlayDownAnim = false;
+					DefinedSprite.Animation = DownSpr;
+					DefinedSprite.Playing = true;
 					break;
 
 				//on release
 				case { } when Input.IsActionJustReleased("Move Down"):
-					canPlayDownAnim = true;
-					down = false;
-					vertic = false;
-					definedSprite.Animation = idleSpr;
-					definedSprite.Playing = false;
+					CanPlayDownAnim = true;
+					Down = false;
+					Vertic = false;
+					DefinedSprite.Animation = IdleSpr;
+					DefinedSprite.Playing = false;
 					break;
 			}
 		}

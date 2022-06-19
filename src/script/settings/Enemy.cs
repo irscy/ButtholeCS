@@ -6,9 +6,10 @@ namespace Butthole.Settings
 	class Enemy : Node2D
 	{
 		//fields
-		Timer deathAnimWait;
-		bool canPlayDeathAnim = false;
-		bool isDead;
+		Timer DeathAnimWait;
+		bool CanPlayDeathAnim = false;
+		bool IsDead;
+		[Export] string LookTarget;
 		AudioStreamPlayer p;
 
 		//children
@@ -31,7 +32,7 @@ namespace Butthole.Settings
 		public override void _PhysicsProcess(float delta)
 		{
 			//after death cycle is completed, destroy the enemy
-			if (canPlayDeathAnim && isDead)
+			if (CanPlayDeathAnim && IsDead)
 			{
 				Free();
 			}	
@@ -59,18 +60,18 @@ namespace Butthole.Settings
 		{
 			var weaponAnim = ((Node2D)area).GetChild<AnimationPlayer>(1);
 			
-			if (((Node2D)area).IsInGroup("Weapon") && !canPlayDeathAnim)
+			if (((Node2D)area).IsInGroup("Weapon") && !CanPlayDeathAnim)
 			{
 				deathAnim.Play("Death");
-				isDead = true;
-				deathAnimWait.Start();
+				IsDead = true;
+				DeathAnimWait.Start();
 			}
 		}
 
-		//after timer is complete, set canPlayDeathAnim back to true
+		//after timer is complete, set CanPlayDeathAnim back to true
 		void OnDeathWaitComplete()
 		{
-			canPlayDeathAnim = true;
+			CanPlayDeathAnim = true;
 		}
 
 		void SetObjectValues()
@@ -84,10 +85,10 @@ namespace Butthole.Settings
 			p = coreNPC.GetChild<AudioStreamPlayer>(3);
 
 			//timer shit
-			deathAnimWait = new Timer();
-			deathAnimWait.WaitTime = 1.8f;
-			deathAnimWait.Connect("timeout", this, "OnDeathWaitComplete");
-			AddChild(deathAnimWait);
+			DeathAnimWait = new Timer();
+			DeathAnimWait.WaitTime = 1.8f;
+			DeathAnimWait.Connect("timeout", this, "OnDeathWaitComplete");
+			AddChild(DeathAnimWait);
 		}
 	}
 }

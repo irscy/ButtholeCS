@@ -5,17 +5,17 @@ namespace Butthole.Settings
 {
 	class CameraFollow : Camera2D
 	{
-		Node2D target;
-		[Export] string targetPath;
+		Node2D Target;
+		[Export] string TargetPath;
 
 		public override void _Ready()
 		{
-			target = GetNode<Node2D>(targetPath);
+			Target = GetNode<Node2D>(TargetPath);
 		}
 
 		public override void _PhysicsProcess(float delta)
 		{
-			Position = target.Position;
+			Position = Target.Position;
 		}
 	}
 }
