@@ -17,7 +17,7 @@ namespace Butthole.Settings
 		{
 			//set object values
 			Scene = GetParent<Node2D>();
-			FloppaCollection = Scene.GetChild<Node2D>(1);
+			FloppaCollection = Scene.GetChild<Node2D>(0);
 			Floppa = GD.Load<PackedScene>("res://src/Scene/FloppaNPC.tscn");
 
 			//instance the first spawn
@@ -37,7 +37,7 @@ namespace Butthole.Settings
 				var Ins = Floppa.Instance();
 				FloppaCollection.AddChild(Ins);
 				((Enemy)Ins).FixTransform();
-				((Node2D)Ins).Position = new Vector2(400, 400);
+				((Node2D)Ins).Position = new Vector2(512, 400);
 			}
 
 			//print enemy count

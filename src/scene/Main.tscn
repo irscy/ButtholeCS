@@ -8,14 +8,14 @@
 
 [node name="Main" type="Node2D"]
 
+[node name="FloppaCollection" type="Node2D" parent="."]
+
 [node name="JINX" parent="." instance=ExtResource( 1 )]
 position = Vector2( 100, 400 )
 HorizSpr = "jinxWALK_horiz"
 UpSpr = "jinxWALK_up"
 DownSpr = "jinxWALK_down"
 IdleSpr = "jinxIDLE"
-
-[node name="FloppaCollection" type="Node2D" parent="."]
 
 [node name="EnemyReset" type="Node2D" parent="."]
 script = ExtResource( 4 )

@@ -7,23 +7,26 @@ namespace Butthole.Settings
 	{
 		//fields
 		Timer DeathAnimWait;
+		Node2D LookTarget;
 		bool CanPlayDeathAnim = false;
 		bool IsDead;
-		[Export] string LookTarget;
+		int hp;
+		[Export] public string LookTargetPath;
 		AudioStreamPlayer p;
 
 		//children
-		Sprite definedSprite;
-		CollisionShape2D hitbox;
-		AnimationPlayer deathAnim;
-		Area2D coreNPC;
-		Node2D path;
+		Sprite DefinedSprite;
+		CollisionShape2D Hitbox;
+		AnimationPlayer Anims;
+		Area2D CoreNPC;
+		Node2D Path;
 
 		public override void _Ready()
 		{
-			//set values of fields lol
+			//set values of fields
 			SetObjectValues();
-			deathAnim.Stop(true);
+			Anims.Stop(true);
+			
 
 			//fix transform of first spawn
 			FixTransform();
@@ -31,41 +34,65 @@ namespace Butthole.Settings
 
 		public override void _PhysicsProcess(float delta)
 		{
+			LookAtTarget();
 			//after death cycle is completed, destroy the enemy
 			if (CanPlayDeathAnim && IsDead)
 			{
 				Free();
 			}	
+
+			if(hp <= 0 && !IsDead)
+			{
+				PlayDeathCycle();
+			}
 		}
 
 		//change node values on spawn to make sure they spawn in the right place
 		public void FixTransform()
 		{
-			definedSprite.Offset = new Vector2(-112, -230);
-			definedSprite.Centered = false;
-			definedSprite.Texture = ResourceLoader.Load<Texture>("res://src/sprite/static/floppaNPC/npc_floppa.png");
+			DefinedSprite.Offset = new Vector2(-112, -230);
+			DefinedSprite.Centered = false;
+			DefinedSprite.Texture = ResourceLoader.Load<Texture>("res://src/sprite/static/floppaNPC/npc_floppa.png");
 
-			Position = new Vector2(400, 400);
+			Position = new Vector2(512, 400);
 
-			hitbox.Position = new Vector2(-6, -58);
+			Hitbox.Position = new Vector2(-6, -58);
 
-			coreNPC.RotationDegrees = 0;
+			CoreNPC.RotationDegrees = 0;
 
-			path.Position = Vector2.Zero;
-			((PathFollow2D)path).Offset = 0;
+			Path.Position = Vector2.Zero;
+			((PathFollow2D)Path).Offset = 0;
 		}
 
 		//when a weapon hits the enemy, play the death cycle
 		private void OnFloppaEnemyEnter(object area)
 		{
-			var weaponAnim = ((Node2D)area).GetChild<AnimationPlayer>(1);
+			var WeaponAnim = ((Node2D)area).GetChild<AnimationPlayer>(1);
 			
 			if (((Node2D)area).IsInGroup("Weapon") && !CanPlayDeathAnim)
 			{
-				deathAnim.Play("Death");
-				IsDead = true;
-				DeathAnimWait.Start();
+				hp -= 1;
+				GD.Print(hp);
 			}
+		}
+
+		void LookAtTarget()
+		{
+			if(LookTarget.Position.x > Position.x && !IsDead)
+			{
+				Scale = new Vector2(-1.5f, 1.5f);
+			}
+			else if(LookTarget.Position.x < Position.x && !IsDead)
+			{
+				Scale = new Vector2(1.5f, 1.5f);
+			}
+		}
+
+		void PlayDeathCycle()
+		{
+			Anims.Play("Death");
+			IsDead = true;
+			DeathAnimWait.Start();
 		}
 
 		//after timer is complete, set CanPlayDeathAnim back to true
@@ -77,12 +104,16 @@ namespace Butthole.Settings
 		void SetObjectValues()
 		{
 			//children
-			path = GetChild<Node2D>(0);
-			coreNPC = path.GetChild<Area2D>(0);
-			definedSprite = coreNPC.GetChild<Sprite>(0);
-			hitbox = coreNPC.GetChild<CollisionShape2D>(1);
-			deathAnim = coreNPC.GetChild<AnimationPlayer>(2);
-			p = coreNPC.GetChild<AudioStreamPlayer>(3);
+			Path = GetChild<Node2D>(0);
+			CoreNPC = Path.GetChild<Area2D>(0);
+			DefinedSprite = CoreNPC.GetChild<Sprite>(0);
+			Hitbox = CoreNPC.GetChild<CollisionShape2D>(1);
+			Anims = CoreNPC.GetChild<AnimationPlayer>(2);
+			p = CoreNPC.GetChild<AudioStreamPlayer>(3);
+			
+			//other
+			LookTarget = GetNode<Node2D>(LookTargetPath);
+			hp = 4;
 
 			//timer shit
 			DeathAnimWait = new Timer();
