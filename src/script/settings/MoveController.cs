@@ -167,6 +167,3 @@ namespace Butthole.Settings
 		}
 	}
 }
-
-
-

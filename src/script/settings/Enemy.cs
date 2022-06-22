@@ -50,8 +50,8 @@ namespace Butthole.Settings
 		//change node values on spawn to make sure they spawn in the right place
 		public void FixTransform()
 		{
-			DefinedSprite.Offset = new Vector2(-112, -230);
-			DefinedSprite.Centered = false;
+			DefinedSprite.Offset = new Vector2(0, 0);
+			DefinedSprite.Centered = true;
 			DefinedSprite.Texture = ResourceLoader.Load<Texture>("res://src/sprite/static/floppaNPC/npc_floppa.png");
 
 			Position = new Vector2(512, 400);

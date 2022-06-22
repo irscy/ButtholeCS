@@ -116,11 +116,3 @@ namespace Butthole.Settings
 		}
 	}
 }
-
-
-
-
-
-
-
-
