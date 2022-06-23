@@ -45,6 +45,7 @@ position = Vector2( -9, 0 )
 shape = SubResource( 1 )
 
 [node name="HitboxVisual" type="Sprite" parent="PathFollow2D/FloppaNPC/CollisionShape2D"]
+visible = false
 modulate = Color( 0.278431, 0.427451, 0.447059, 0.313726 )
 scale = Vector2( 1.0835, 1.448 )
 texture = ExtResource( 7 )

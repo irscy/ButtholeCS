@@ -31,6 +31,7 @@ script = ExtResource( 2 )
 TargetPath = "/root/Main/JINX"
 
 [node name="UI" type="Control" parent="Camera2D"]
+visible = false
 margin_left = -100.0
 margin_top = -400.0
 margin_right = -60.0
