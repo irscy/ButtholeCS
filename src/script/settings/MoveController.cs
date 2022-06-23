@@ -30,18 +30,6 @@ namespace Butthole.Settings
 		bool CanPlayUpAnim;
 		bool CanPlayDownAnim;
 
-		public void SetObjectValues()
-		{
-			DefinedSprite = GetChild<AnimatedSprite>(0);
-			DefinedSprite.Animation = IdleSpr;
-			FlipAnim = DefinedSprite.GetChild<AnimationPlayer>(0);
-			CanPlayHorizAnim = true;
-			CanPlayUpAnim = true;
-			CanPlayDownAnim = true;
-			XSpeed = new Vector2(200, 0);
-			YSpeed = new Vector2(0, 200);
-		}
-
 		public override void _Ready()
 		{
 			SetObjectValues();
@@ -164,6 +152,18 @@ namespace Butthole.Settings
 					DefinedSprite.Playing = false;
 					break;
 			}
+		}
+
+		public void SetObjectValues()
+		{
+			DefinedSprite = GetChild<AnimatedSprite>(0);
+			DefinedSprite.Animation = IdleSpr;
+			FlipAnim = DefinedSprite.GetChild<AnimationPlayer>(0);
+			CanPlayHorizAnim = true;
+			CanPlayUpAnim = true;
+			CanPlayDownAnim = true;
+			XSpeed = new Vector2(200, 0);
+			YSpeed = new Vector2(0, 200);
 		}
 	}
 }

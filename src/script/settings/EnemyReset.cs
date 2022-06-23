@@ -39,12 +39,6 @@ namespace Butthole.Settings
 				((Enemy)Ins).FixTransform();
 				((Node2D)Ins).Position = new Vector2(512, 400);
 			}
-
-			//print enemy count
-			if(Input.IsActionJustPressed("DEBUG"))
-			{
-				GD.Print(FloppaCollection.GetChildCount());
-			}
 		}
 	}
 }

@@ -3,5 +3,5 @@
 [ext_resource path="res://src/font/origin/Sono/desktop/Sono-ExtraBold.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 26
+size = 14
 font_data = ExtResource( 1 )

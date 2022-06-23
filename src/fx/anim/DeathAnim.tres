@@ -15,7 +15,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.32, 1.05 ),
+"times": PoolRealArray( 0, 0.35, 1.05 ),
 "transitions": PoolRealArray( 1, 0.184672, 0.3 ),
 "update": 0,
 "values": [ 0.0, 141.63, 215.14 ]
@@ -101,7 +101,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.3 ),
+"times": PoolRealArray( 0, 0.35 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ ExtResource( 2 ), ExtResource( 3 ) ]

@@ -16,6 +16,9 @@ namespace Butthole.Settings
 		Timer SwingTimer;
 		Timer AnimBoxEnable;
 
+		Control UI;
+		Label Timer;
+
 		CollisionShape2D Hitbox;
 
 		float SwingDelay = 0.4f;
@@ -25,26 +28,7 @@ namespace Butthole.Settings
 
 		public override void _Ready()
 		{
-			//setting object values
-			SwingAnim = GetChild<AnimationPlayer>(1);
-			SwingIndex = 1;
-			SpriteChild = GetChild<Sprite>(0);
-			WeaponHolder = GetParent<Node2D>();
-			WeaponHolderSprite = WeaponHolder.GetChild<AnimatedSprite>(0);
-			Hitbox = GetChild<CollisionShape2D>(2);
-
-			//timer shit
-			SwingTimer = new Timer();
-			SwingTimer.OneShot = true;
-			SwingTimer.WaitTime = SwingDelay;
-			SwingTimer.Connect("timeout", this, "OnSwingTimeoutComplete");
-			AddChild(SwingTimer);
-
-			AnimBoxEnable = new Timer();
-			AnimBoxEnable.OneShot = true;
-			AnimBoxEnable.WaitTime = SwingTimer.WaitTime; //big brain move btw
-			AnimBoxEnable.Connect("timeout", this, "OnHitboxEnableComplete");
-			AddChild(AnimBoxEnable);
+			SetObjectValues();
 
 			//default position
 			Position = new Vector2(-24, -40);
@@ -55,6 +39,8 @@ namespace Butthole.Settings
 		{
 			//calling methods with float delta
 			RunSwing(delta);
+
+			Timer.Text = SwingTimer.TimeLeft.ToString();
 
 			if(SwingAnim.IsPlaying())
 			{
@@ -113,6 +99,32 @@ namespace Butthole.Settings
 			{
 				SwingIndex = 1;
 			}
+		}
+
+		void SetObjectValues()
+		{
+			//setting object values
+			SwingAnim = GetChild<AnimationPlayer>(1);
+			SwingIndex = 1;
+			SpriteChild = GetChild<Sprite>(0);
+			WeaponHolder = GetParent<Node2D>();
+			WeaponHolderSprite = WeaponHolder.GetChild<AnimatedSprite>(0);
+			Hitbox = GetChild<CollisionShape2D>(2);
+			UI = GetChild<Control>(3);
+			Timer = UI.GetChild<Label>(0);
+
+			//timer shit
+			SwingTimer = new Timer();
+			SwingTimer.OneShot = true;
+			SwingTimer.WaitTime = SwingDelay;
+			SwingTimer.Connect("timeout", this, "OnSwingTimeoutComplete");
+			AddChild(SwingTimer);
+
+			AnimBoxEnable = new Timer();
+			AnimBoxEnable.OneShot = true;
+			AnimBoxEnable.WaitTime = SwingTimer.WaitTime; //big brain move btw
+			AnimBoxEnable.Connect("timeout", this, "OnHitboxEnableComplete");
+			AddChild(AnimBoxEnable);
 		}
 	}
 }
