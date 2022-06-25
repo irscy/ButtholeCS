@@ -3,7 +3,7 @@ using Godot;
 
 namespace Butthole
 {
-	class LabelUnblur : RichTextLabel
+	partial class LabelUnblur : RichTextLabel
 	{
 		Camera2D camera; 
 		Node2D Main;

@@ -3,11 +3,11 @@ using Butthole;
 
 namespace Butthole.Settings
 {
-	class MoveController : Node2D
+	partial class MoveController : Node2D
 	{
 
 		//objects
-		AnimatedSprite DefinedSprite;
+		AnimatedSprite2D DefinedSprite;
 
 		AnimationPlayer FlipAnim;
 
@@ -156,7 +156,7 @@ namespace Butthole.Settings
 
 		public void SetObjectValues()
 		{
-			DefinedSprite = GetChild<AnimatedSprite>(0);
+			DefinedSprite = GetChild<AnimatedSprite2D>(0);
 			DefinedSprite.Animation = IdleSpr;
 			FlipAnim = DefinedSprite.GetChild<AnimationPlayer>(0);
 			CanPlayHorizAnim = true;

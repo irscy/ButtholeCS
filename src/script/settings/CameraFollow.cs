@@ -3,7 +3,7 @@ using Butthole;
 
 namespace Butthole.Settings
 {
-	class CameraFollow : Camera2D
+	partial class CameraFollow : Camera2D
 	{
 		Node2D Target;
 		[Export] string TargetPath;

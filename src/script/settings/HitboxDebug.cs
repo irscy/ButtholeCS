@@ -3,7 +3,7 @@ using Butthole;
 
 namespace Butthole
 {
-	class HitboxDebug :  Sprite
+	partial class HitboxDebug :  Sprite2D
 	{
 		CollisionShape2D Hitbox;
 

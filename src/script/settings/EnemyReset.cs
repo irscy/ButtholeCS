@@ -4,7 +4,7 @@ using System;
 
 namespace Butthole.Settings
 {
-	class EnemyReset : Node2D
+	partial class EnemyReset : Node2D
 	{
 		Random Rand = new Random();
 		PackedScene Floppa;
@@ -21,7 +21,7 @@ namespace Butthole.Settings
 			Floppa = GD.Load<PackedScene>("res://src/Scene/FloppaNPC.tscn");
 
 			//instance the first spawn
-			var firstSpawn = Floppa.Instance();
+			var firstSpawn = Floppa.Instantiate();
 			FloppaCollection.AddChild(firstSpawn);
 
 			e = GetNode<Enemy>("/root/Main/FloppaCollection/FloppaNPC");
@@ -34,7 +34,7 @@ namespace Butthole.Settings
 			if(Input.IsActionJustPressed("Reset Enemies") && FloppaCollection.GetChildCount() < 1)
 			{
 				RandY = Rand.Next(100, 525);
-				var Ins = Floppa.Instance();
+				var Ins = Floppa.Instantiate();
 				FloppaCollection.AddChild(Ins);
 				((Enemy)Ins).FixTransform();
 				((Node2D)Ins).Position = new Vector2(512, 400);

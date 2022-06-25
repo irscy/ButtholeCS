@@ -1,9 +1,10 @@
 using Butthole;
 using Godot;
+using Godot.Collections;
 
 namespace Butthole.Settings
 {
-	class Enemy : Node2D
+	partial class Enemy : Node2D
 	{
 		//fields
 		AudioStreamPlayer p;
@@ -18,7 +19,7 @@ namespace Butthole.Settings
 		[Export] public string LookTargetPath;
 
 		//children
-		Sprite DefinedSprite;
+		Sprite2D DefinedSprite;
 		CollisionShape2D Hitbox;
 		AnimationPlayer Anims;
 		Area2D CoreNPC;
@@ -66,13 +67,13 @@ namespace Butthole.Settings
 		{
 			DefinedSprite.Offset = new Vector2(0, 0);
 			DefinedSprite.Centered = true;
-			DefinedSprite.Texture = ResourceLoader.Load<Texture>("res://src/sprite/static/floppaNPC/npc_floppa.png");
+			DefinedSprite.Texture = ResourceLoader.Load<Texture2D>("res://src/sprite/static/floppaNPC/npc_floppa.png");
 
 			Position = new Vector2(512, 400);
 
 			Hitbox.Position = new Vector2(-9, 0);
 
-			CoreNPC.RotationDegrees = 0;
+			CoreNPC.Rotation = 0;
 
 			Path.Position = Vector2.Zero;
 			((PathFollow2D)Path).Offset = 0;
@@ -148,7 +149,7 @@ namespace Butthole.Settings
 			//children
 			Path = GetChild<Node2D>(0);
 			CoreNPC = Path.GetChild<Area2D>(0);
-			DefinedSprite = CoreNPC.GetChild<Sprite>(0);
+			DefinedSprite = CoreNPC.GetChild<Sprite2D>(0);
 			Hitbox = CoreNPC.GetChild<CollisionShape2D>(1);
 			Anims = CoreNPC.GetChild<AnimationPlayer>(2);
 			p = CoreNPC.GetChild<AudioStreamPlayer>(3);
@@ -160,15 +161,16 @@ namespace Butthole.Settings
 			HP = 4;
 
 			//timer shit
+			Callable c = new Callable(this, "OnDeathWaitComplete");
 			DeathAnimWait = new Timer();
 			DeathAnimWait.WaitTime = 1.8f;
-			DeathAnimWait.Connect("timeout", this, "OnDeathWaitComplete");
+			DeathAnimWait.Connect("timeout", new Callable(this, "OnDeathWaitComplete"));
 			AddChild(DeathAnimWait);
 
 			HitCooldown = new Timer();
 			HitCooldown.WaitTime = 0.3f;
 			HitCooldown.OneShot = true;
-			HitCooldown.Connect("timeout", this, "OnHitWaitComplete");
+			HitCooldown.Connect("timeout", new Callable(this, "OnHitWaitComplete"));
 			AddChild(HitCooldown);
 		}
 	}

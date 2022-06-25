@@ -3,3 +3,8 @@ C:\Users\Owner\Documents\GitHub\Butthole\.godot\mono\temp\obj\Debug\Butthole.Gen
 C:\Users\Owner\Documents\GitHub\Butthole\.godot\mono\temp\obj\Debug\Butthole.AssemblyInfoInputs.cache
 C:\Users\Owner\Documents\GitHub\Butthole\.godot\mono\temp\obj\Debug\Butthole.AssemblyInfo.cs
 C:\Users\Owner\Documents\GitHub\Butthole\.godot\mono\temp\obj\Debug\Butthole.csproj.CoreCompileInputs.cache
+C:\Users\Owner\Documents\GitHub\Butthole\.godot\mono\temp\bin\Debug\Butthole.deps.json
+C:\Users\Owner\Documents\GitHub\Butthole\.godot\mono\temp\bin\Debug\Butthole.dll
+C:\Users\Owner\Documents\GitHub\Butthole\.godot\mono\temp\bin\Debug\Butthole.pdb
+C:\Users\Owner\Documents\GitHub\Butthole\.godot\mono\temp\obj\Debug\Butthole.dll
+C:\Users\Owner\Documents\GitHub\Butthole\.godot\mono\temp\obj\Debug\Butthole.pdb

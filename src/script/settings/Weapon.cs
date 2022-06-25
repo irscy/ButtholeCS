@@ -3,13 +3,13 @@ using Butthole;
 
 namespace Butthole.Settings
 {
-	class Weapon : Node2D
+	partial class Weapon : Node2D
 	{
 		//fields
 		Node2D SpriteChild;
 		Node2D WeaponHolder;
 
-		AnimatedSprite WeaponHolderSprite;
+		AnimatedSprite2D WeaponHolderSprite;
 
 		AnimationPlayer SwingAnim;
 
@@ -32,7 +32,7 @@ namespace Butthole.Settings
 
 			//default position
 			Position = new Vector2(-24, -40);
-			RotationDegrees = 11;
+			Rotation = 11;
 		}
 
 		public override void _PhysicsProcess(float delta)
@@ -106,9 +106,9 @@ namespace Butthole.Settings
 			//setting object values
 			SwingAnim = GetChild<AnimationPlayer>(1);
 			SwingIndex = 1;
-			SpriteChild = GetChild<Sprite>(0);
+			SpriteChild = GetChild<Sprite2D>(0);
 			WeaponHolder = GetParent<Node2D>();
-			WeaponHolderSprite = WeaponHolder.GetChild<AnimatedSprite>(0);
+			WeaponHolderSprite = WeaponHolder.GetChild<AnimatedSprite2D>(0);
 			Hitbox = GetChild<CollisionShape2D>(2);
 			UI = GetChild<Control>(3);
 			Timer = UI.GetChild<Label>(0);
@@ -117,13 +117,13 @@ namespace Butthole.Settings
 			SwingTimer = new Timer();
 			SwingTimer.OneShot = true;
 			SwingTimer.WaitTime = SwingDelay;
-			SwingTimer.Connect("timeout", this, "OnSwingTimeoutComplete");
+			SwingTimer.Connect("timeout", new Callable(this, "OnSwingTimeoutComplete"));
 			AddChild(SwingTimer);
 
 			AnimBoxEnable = new Timer();
 			AnimBoxEnable.OneShot = true;
 			AnimBoxEnable.WaitTime = SwingTimer.WaitTime; //big brain move btw
-			AnimBoxEnable.Connect("timeout", this, "OnHitboxEnableComplete");
+			AnimBoxEnable.Connect("timeout", new Callable(this, "OnHitboxEnableComplete"));
 			AddChild(AnimBoxEnable);
 		}
 	}

@@ -1,2 +1,2 @@
-﻿61009
+﻿57490
 C:/Program Files/Godot4Mono/godot.windows.tools.64.mono.exe
