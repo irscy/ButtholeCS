@@ -1,0 +1,5 @@
+C:\Users\Owner\Documents\GitHub\Butthole\.godot\mono\temp\obj\Debug\Butthole.csproj.AssemblyReference.cache
+C:\Users\Owner\Documents\GitHub\Butthole\.godot\mono\temp\obj\Debug\Butthole.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Owner\Documents\GitHub\Butthole\.godot\mono\temp\obj\Debug\Butthole.AssemblyInfoInputs.cache
+C:\Users\Owner\Documents\GitHub\Butthole\.godot\mono\temp\obj\Debug\Butthole.AssemblyInfo.cs
+C:\Users\Owner\Documents\GitHub\Butthole\.godot\mono\temp\obj\Debug\Butthole.csproj.CoreCompileInputs.cache

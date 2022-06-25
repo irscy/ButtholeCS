@@ -1,56 +1,45 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://bkxyauen8pjwj"]
 
-[ext_resource path="res://src/scene/JINX.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/script/settings/CameraFollow.cs" type="Script" id=2]
-[ext_resource path="res://src/font/dynamic/Sono.tres" type="DynamicFont" id=3]
-[ext_resource path="res://src/script/settings/EnemyReset.cs" type="Script" id=4]
-[ext_resource path="res://src/font/Sono.theme" type="Theme" id=5]
+[ext_resource type="PackedScene" path="res://src/scene/JINX.tscn" id="1"]
+[ext_resource type="Script" path="res://src/script/settings/CameraFollow.cs" id="2"]
+[ext_resource type="Font" uid="uid://bltuamjd1q3x" path="res://src/font/dynamic/Sono.tres" id="3"]
+[ext_resource type="Script" path="res://src/script/settings/EnemyReset.cs" id="4"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 100, 400 )
+position = Vector2(100, 400)
 current = true
-process_mode = 0
-drag_margin_v_enabled = true
 smoothing_enabled = true
-offset_v = -1.0
 editor_draw_drag_margin = true
-script = ExtResource( 2 )
+script = ExtResource( "2" )
 TargetPath = "/root/Main/JINX"
 
 [node name="UI" type="Control" parent="Camera2D"]
-visible = false
-margin_left = -100.0
-margin_top = -400.0
-margin_right = -60.0
-margin_bottom = -360.0
 
 [node name="Label" type="Label" parent="Camera2D/UI"]
 anchor_left = -10.2
 anchor_top = 15.3
 anchor_right = 0.135
 anchor_bottom = 16.019
-margin_left = 3.05176e-05
-margin_top = -6.10352e-05
-margin_right = -5.4
-margin_bottom = 0.240051
-rect_scale = Vector2( 1.0132, 0.99134 )
+rect_scale = Vector2(1.0132, 0.99134)
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource( 5 )
-custom_fonts/font = ExtResource( 3 )
+theme_override_fonts/font = ExtResource( "3" )
+theme_override_font_sizes/font_size = 25
 text = "Press Q to reset enemies"
-valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="FloppaCollection" type="Node2D" parent="."]
 
-[node name="JINX" parent="." instance=ExtResource( 1 )]
-position = Vector2( 100, 400 )
+[node name="JINX" parent="." instance=ExtResource( "1" )]
+position = Vector2(100, 400)
 HorizSpr = "jinxWALK_horiz"
 UpSpr = "jinxWALK_up"
 DownSpr = "jinxWALK_down"
 IdleSpr = "jinxIDLE"
 
 [node name="EnemyReset" type="Node2D" parent="."]
-script = ExtResource( 4 )
+script = ExtResource( "4" )

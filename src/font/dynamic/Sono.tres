@@ -1,7 +1,6 @@
-[gd_resource type="DynamicFont" load_steps=2 format=2]
+[gd_resource type="Font" load_steps=2 format=3 uid="uid://bltuamjd1q3x"]
 
-[ext_resource path="res://src/font/origin/Sono/desktop/Sono-ExtraBold.ttf" type="DynamicFontData" id=1]
+[ext_resource type="FontData" uid="uid://bvnuv7t45k8gf" path="res://src/font/origin/Sono/desktop/Sono-ExtraBold.ttf" id="1"]
 
 [resource]
-size = 1
-font_data = ExtResource( 1 )
+data/0 = ExtResource( "1" )
