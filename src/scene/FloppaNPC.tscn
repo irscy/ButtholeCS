@@ -69,6 +69,7 @@ margin_right = 40.0
 margin_bottom = 90.0
 
 [node name="HP" type="Label" parent="PathFollow2D/Control"]
+visible = false
 anchor_left = -0.675
 anchor_top = -2.175
 anchor_right = 0.275
@@ -84,5 +85,14 @@ text = "4"
 align = 1
 valign = 1
 script = ExtResource( 8 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PathFollow2D/Control"]
+margin_right = 47.0
+margin_bottom = 40.0
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "[center] gaming [/center]"
+text = " gaming "
+scroll_active = false
 
 [connection signal="area_entered" from="PathFollow2D/FloppaNPC" to="." method="OnFloppaEnemyEnter"]

@@ -2,12 +2,13 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/death.mp3-80e28c06c2c1a231bb840bdddf5804b6.mp3str"
+uid="uid://cdpx81h0nm35k"
+path="res://.godot/imported/death.mp3-80e28c06c2c1a231bb840bdddf5804b6.mp3str"
 
 [deps]
 
 source_file="res://src/audio/death.mp3"
-dest_files=[ "res://.import/death.mp3-80e28c06c2c1a231bb840bdddf5804b6.mp3str" ]
+dest_files=["res://.godot/imported/death.mp3-80e28c06c2c1a231bb840bdddf5804b6.mp3str"]
 
 [params]
 
