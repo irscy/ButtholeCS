@@ -11,6 +11,16 @@
 [ext_resource path="res://src/sprite/spriteSHEETS/jinxWALK_down.png" type="Texture" id=10]
 [ext_resource path="res://src/sprite/spriteSHEETS/jinxWALK_up.png" type="Texture" id=11]
 
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 290, 384 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 290, 0, 290, 384 )
+
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 9 )
@@ -31,18 +41,13 @@ flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 290, 0, 290, 384 )
 
-[sub_resource type="AtlasTexture" id=7]
-flags = 4
-atlas = ExtResource( 11 )
-region = Rect2( 0, 0, 290, 384 )
-
-[sub_resource type="AtlasTexture" id=8]
-flags = 4
-atlas = ExtResource( 11 )
-region = Rect2( 290, 0, 290, 384 )
-
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
+"frames": [ SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "jinxWALK_up",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "jinxIDLE",
@@ -56,11 +61,6 @@ animations = [ {
 "frames": [ SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "jinxWALK_down",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 7 ), SubResource( 8 ) ],
-"loop": true,
-"name": "jinxWALK_up",
 "speed": 5.0
 } ]
 
@@ -157,6 +157,7 @@ rotation = -0.785397
 shape = SubResource( 11 )
 
 [node name="HitboxVisual" type="Sprite" parent="Stick/CollisionShape2D"]
+visible = false
 modulate = Color( 0.286275, 0.964706, 1, 0.341176 )
 position = Vector2( 0.0242887, -0.0168314 )
 scale = Vector2( 0.233707, 2.28611 )

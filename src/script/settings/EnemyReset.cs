@@ -17,7 +17,7 @@ namespace Butthole.Settings
 		{
 			//set object values
 			Scene = GetParent<Node2D>();
-			FloppaCollection = Scene.GetChild<Node2D>(0);
+			FloppaCollection = Scene.GetChild<Node2D>(1);
 			Floppa = GD.Load<PackedScene>("res://src/Scene/FloppaNPC.tscn");
 
 			//instance the first spawn
