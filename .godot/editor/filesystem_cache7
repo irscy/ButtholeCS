@@ -1,5 +1,5 @@
 102b54792f6b2ef812636a2bdaeb9d34
-::res://::1656199282
+::res://::1656243388
 default_env.tres::Environment::-1::1656183572::0::1::::<><>::
 export_presets.cfg::TextFile::-1::1655402383::0::1::::<><>::
 icon.png::StreamTexture2D::4967529436333718001::1653838565::1656183654::1::::<><>::
@@ -39,16 +39,16 @@ FlipDirUp.tres::Animation::-1::1655342755::0::1::::<><>::
 SwingDown.tres::Animation::-1::1655336371::0::1::::<><>::
 SwingUp.tres::Animation::-1::1655336278::0::1::::<><>::
 SwingWeapon.tscn::PackedScene::-1::1655342757::0::1::::<><>::res://src/fx/anim/SwingUp.tres<>res://src/fx/anim/SwingDown.tres
-::res://src/scene/::1656198619
+::res://src/scene/::1656199299
 FloppaNPC.tscn::PackedScene::4056185683531443956::1656198452::0::1::::<><>::uid://dqlv8c8oid7iv<>res://src/script/settings/Enemy.cs<>res://src/fx/anim/DeathAnim.tres<>uid://cdpx81h0nm35k<>res://src/font/Sono.theme<>uid://bvnuv7t45k8gf<>uid://bagk84ta72dhs<>res://src/script/settings/LabelUnblur.cs
 JINX.tscn::PackedScene::-1::1656182690::0::1::::<><>::res://src/sprite/static/jinx/jinxSPRITE.png<>res://src/script/settings/MoveController.cs<>res://src/fx/anim/FlipAnim.tscn<>res://src/sprite/static/hitbox.png<>res://src/script/settings/Weapon.cs<>res://src/sprite/jinx_STICK.png<>res://src/fx/anim/SwingWeapon.tscn<>res://src/sprite/spriteSHEETS/jinxWALK_horiz.png<>res://src/sprite/spriteSHEETS/jinxWALK_down.png<>res://src/sprite/spriteSHEETS/jinxWALK_up.png
-Main.tscn::PackedScene::3137248073524775745::1656198619::0::1::::<><>::res://src/scene/JINX.tscn<>res://src/script/settings/CameraFollow.cs<>uid://bltuamjd1q3x<>res://src/script/settings/EnemyReset.cs
+Main.tscn::PackedScene::3137248073524775745::1656199299::0::1::::<><>::res://src/scene/JINX.tscn<>res://src/script/settings/CameraFollow.cs<>uid://bltuamjd1q3x<>res://src/script/settings/EnemyReset.cs
 ::res://src/script/::1655499581
 ::res://src/script/settings/::1656105403
 CameraFollow.cs::CSharpScript::-1::1656198350::0::1::::<><>::
 copy.txt::TextFile::-1::1655340648::0::1::::<><>::
 Enemy.cs::CSharpScript::-1::1656198156::0::1::::<><>::
-EnemyReset.cs::CSharpScript::-1::1656190809::0::1::::<><>::
+EnemyReset.cs::CSharpScript::-1::1656241249::0::1::::<><>::
 HitboxDebug.cs::CSharpScript::-1::1656198343::0::1::::<><>::
 LabelUnblur.cs::CSharpScript::-1::1656198356::0::1::::<><>::
 MoveController.cs::CSharpScript::-1::1656198351::0::1::::<><>::
