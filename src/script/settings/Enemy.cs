@@ -25,7 +25,7 @@ namespace Butthole.Settings
 		Area2D CoreNPC;
 		Node2D Path;
 		Control UI;
-		Label HPCounter;
+		RichTextLabel HPCounter;
 
 
 		public override void _Ready()
@@ -154,7 +154,7 @@ namespace Butthole.Settings
 			Anims = CoreNPC.GetChild<AnimationPlayer>(2);
 			p = CoreNPC.GetChild<AudioStreamPlayer>(3);
 			UI = Path.GetChild<Control>(1);
-			HPCounter = UI.GetChild<Label>(0);
+			HPCounter = UI.GetChild<RichTextLabel>(0);
 			
 			//other
 			LookTarget = GetNode<Node2D>(LookTargetPath);

@@ -21,8 +21,8 @@ namespace Butthole.Settings
 			Floppa = ResourceLoader.Load<PackedScene>("res://src/scene/FloppaNPC.tscn");
 
 			//instance the first spawn
-			var firstSpawn = Floppa.Instantiate();
-			FloppaCollection.AddChild(firstSpawn);
+			var FirstSpawn = Floppa.Instantiate();
+			FloppaCollection.AddChild(FirstSpawn);
 
 			e = GetNode<Enemy>("/root/Main/FloppaCollection/FloppaNPC");
 			e.FixTransform();

@@ -16,6 +16,7 @@ script = ExtResource( "2" )
 TargetPath = "/root/Main/JINX"
 
 [node name="UI" type="Control" parent="Camera2D"]
+visible = false
 
 [node name="Label" type="Label" parent="Camera2D/UI"]
 anchor_left = -10.2

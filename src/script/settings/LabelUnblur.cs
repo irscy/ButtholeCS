@@ -11,8 +11,7 @@ namespace Butthole
 		public override void _Ready()
 		{
 			Main = GetTree().Root.GetNode<Node2D>("Main");
-			camera = Main.GetNode<Camera2D>("Camera2D");
-			
+			camera = Main.GetNode<Camera2D>("Camera2D");		
 		}
 	}
 }

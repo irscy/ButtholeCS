@@ -10,15 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Butthole"
+config/name="Butthole_OLD"
 run/main_scene="res://src/scene/Main.tscn"
 boot_splash/image="res://src/sprite/static/extra/splash.png"
 config/icon="res://icon.png"
-config/features=PackedStringArray("4.0", "C#")
-
-[autoload]
-
-
+config/features=PackedStringArray("4.0")
 
 [display]
 
