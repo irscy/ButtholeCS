@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bkxyauen8pjwj"]
 
-[ext_resource type="PackedScene" path="res://src/scene/JINX.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://c5ufqamx3womf" path="res://src/scene/JINX.tscn" id="1"]
 [ext_resource type="Script" path="res://src/script/settings/CameraFollow.cs" id="2"]
 [ext_resource type="Font" uid="uid://bltuamjd1q3x" path="res://src/font/dynamic/Sono.tres" id="3"]
 [ext_resource type="Script" path="res://src/script/settings/EnemyReset.cs" id="4"]
